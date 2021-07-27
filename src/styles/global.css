@@ -1,0 +1,26 @@
+:root {
+  --color-neutral-dark-mode-background: #202c36;
+  --color-neutral-dark-mode-elements: #2b3844;
+  --color-neutral-dark-mode-text: #ffffff;
+  --color-neutral-light-mode-background: #fafafa;
+  --color-neutral-light-mode-elements: #ffffff;
+  --color-neutral-light-mode-input-content: #848484;
+  --color-neutral-light-mode-text: #111517;
+  --font-family: 'Nunito Sans', sans-serif;
+  --font-weight-black: 900;
+  --font-weight-extra-light: 200;
+  --font-weight-regular: 400;
+  --font-weight-semi-bold: 600;
+}
+
+html {
+  font-size: 1rem;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: var(--font-weight-regular);
+}
