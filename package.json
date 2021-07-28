@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/richardcyrus/fm-rest-countries-api-app#readme",
   "dependencies": {
+    "@heroicons/react": "^1.0.3",
+    "prop-types": "^15.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },

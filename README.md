@@ -61,6 +61,7 @@ Users should be able to:
 - [Next.js](https://vitejs.dev/) - a build tool that aims to provide a faster and leaner development experience for modern web projects
 - [Axios](https://axios-http.com/)
 - [React Query](https://react-query.tanstack.com/)
+- [Heroicons](https://heroicons.com)
 
 ### Useful resources
 
@@ -68,6 +69,8 @@ Users should be able to:
 - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 - [Set up Light and Dark Theme in React](https://milddev.com/react/set-up-light-and-dark-theme-in-react/)
+- [A Dark Mode Toggle with React and ThemeProvider](https://css-tricks.com/a-dark-mode-toggle-with-react-and-themeprovider/)
+- [Guide to Advanced CSS Selectors - Part One](https://moderncss.dev/guide-to-advanced-css-selectors-part-one/#attribute-selector)
 
 ## Author
 

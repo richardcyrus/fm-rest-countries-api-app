@@ -1,16 +1,28 @@
 :root {
-  --color-neutral-dark-mode-background: #202c36;
-  --color-neutral-dark-mode-elements: #2b3844;
-  --color-neutral-dark-mode-text: #ffffff;
-  --color-neutral-light-mode-background: #fafafa;
-  --color-neutral-light-mode-elements: #ffffff;
-  --color-neutral-light-mode-input-content: #848484;
-  --color-neutral-light-mode-text: #111517;
+  --color-background: #fafafa;
+  --color-element-background: #ffffff;
+  --color-input-content: #848484;
+  --color-input-placeholder: #c4c4c4;
+  --color-text: #111517;
   --font-family: 'Nunito Sans', sans-serif;
   --font-weight-black: 900;
   --font-weight-extra-light: 200;
   --font-weight-regular: 400;
   --font-weight-semi-bold: 600;
+  --input-focus-h: 0;
+  --input-focus-l: 52%;
+  --input-focus-s: 0%;
+}
+
+.dark {
+  --color-background: #202c36;
+  --color-element-background: #2b3844;
+  --color-input-content: #ffffff;
+  --color-input-placeholder: #ffffff;
+  --color-text: #ffffff;
+  --input-focus-h: 207;
+  --input-focus-l: 17%;
+  --input-focus-s: 26%;
 }
 
 html {
@@ -20,7 +32,21 @@ html {
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  background-color: var(--color-background);
+  color: var(--color-text);
   font-family: var(--font-family);
   font-size: 1rem;
   font-weight: var(--font-weight-regular);
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 2px solid currentColor;
+  }
 }

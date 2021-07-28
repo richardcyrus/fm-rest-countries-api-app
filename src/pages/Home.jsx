@@ -1,9 +1,9 @@
+import Header from '../components/Header'
+
 function Home() {
   return (
     <div>
-      <header>
-        <p>Hello Vite + React!</p>
-      </header>
+      <Header />
     </div>
   )
 }
