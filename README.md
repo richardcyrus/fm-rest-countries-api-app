@@ -52,16 +52,19 @@ Users should be able to:
 
 ### Built with
 
-- Semantic HTML5 markup
 - CSS custom properties
-- Flexbox
 - CSS Grid
+- Flexbox
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://vitejs.dev/) - a build tool that aims to provide a faster and leaner development experience for modern web projects
+- Semantic HTML5 markup
 - [Axios](https://axios-http.com/)
-- [React Query](https://react-query.tanstack.com/)
+- [cypress](https://www.cypress.io/)
+- [headless UI](https://headlessui.dev/)
 - [Heroicons](https://heroicons.com)
+- [Vite.js](https://vitejs.dev/) - a build tool that aims to provide a faster and leaner development experience for modern web projects
+- [Reach UI](https://reach.tech/)
+- [React Query](https://react-query.tanstack.com/)
+- [React](https://reactjs.org/) - JS library
 
 ### Useful resources
 

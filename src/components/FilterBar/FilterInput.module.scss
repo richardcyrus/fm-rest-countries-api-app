@@ -1,0 +1,59 @@
+.controlGroup {
+  align-items: center;
+  background: var(--color-element-background);
+  border-radius: 5px;
+  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.05);
+  color: var(--color-input-content);
+  display: flex;
+  height: 3em;
+  margin-inline: 1em;
+  padding-inline-start: 2em;
+
+  @media screen and (min-width: 48em) {
+    margin-inline: 0;
+    width: 30em;
+  }
+
+  &:focus-within {
+    border-color: hsl(
+      var(--input-focus-h),
+      var(--input-focus-s),
+      var(--input-focus-l)
+    );
+    box-shadow: 0 0 0 3px
+      hsla(
+        var(--input-focus-h),
+        var(--input-focus-s),
+        calc(var(--input-focus-l) + 40%),
+        0.8
+      );
+  }
+}
+
+.searchIcon {
+  height: 16px;
+  width: 16px;
+}
+
+.searchInput {
+  background-color: transparent;
+  border: none;
+  color: var(--color-input-content);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.25rem;
+  margin-inline-start: 1.5em;
+  padding: 0.25em 0.15em;
+  transition: 180ms box-shadow ease-in-out;
+  width: 80%;
+
+  &::placeholder {
+    font-size: 0.75rem;
+    color: var(--color-input-placeholder);
+  }
+
+  &:focus {
+    outline: 3px solid transparent;
+  }
+}
