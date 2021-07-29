@@ -8,10 +8,12 @@ function Home() {
   return (
     <>
       <Header />
-      <FilterBar />
-      <div className={styles.cardContainer}>
-        <Card />
-      </div>
+      <main id="main-content">
+        <FilterBar />
+        <div className={styles.cardContainer}>
+          <Card />
+        </div>
+      </main>
     </>
   )
 }
