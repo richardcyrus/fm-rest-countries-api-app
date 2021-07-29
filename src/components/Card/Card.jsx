@@ -4,13 +4,13 @@ import styles from './Card.module.scss'
 
 function Card() {
   return (
-    <Link to="/details/col">
+    <Link to="/details/col" className={styles.cardLink}>
       <div className={styles.card}>
         <div className={styles.cardImage}>
           <img
             className={styles.flag}
             src="https://restcountries.eu/data/col.svg"
-            alt=""
+            alt="Flag of Columbia"
           />
         </div>
         <div className={styles.cardBody}>
