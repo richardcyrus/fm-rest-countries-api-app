@@ -9,9 +9,6 @@
 // https://on.cypress.io/plugins-guide
 // ***********************************************************
 const { startDevServer } = require('@cypress/vite-dev-server')
-const svgr = require('vite-plugin-svgr')
-const envCompatible = require('vite-plugin-env-compatible').default
-const reactJsx = require('vite-react-jsx').default
 
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
@@ -24,7 +21,9 @@ module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   const viteConfig = {
-    plugins: [reactJsx(), svgr(), envCompatible()],
+    server: {
+      port: 3800,
+    },
   }
 
   on('dev-server:start', (options) => {
