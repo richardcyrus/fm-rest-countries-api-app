@@ -63,6 +63,7 @@ Users should be able to:
 - [Heroicons](https://heroicons.com)
 - [Vite.js](https://vitejs.dev/) - a build tool that aims to provide a faster and leaner development experience for modern web projects
 - [Reach UI](https://reach.tech/)
+- [React Router](https://reactrouter.com/)
 - [React Query](https://react-query.tanstack.com/)
 - [React](https://reactjs.org/) - JS library
 

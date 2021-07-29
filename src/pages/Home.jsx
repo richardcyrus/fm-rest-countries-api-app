@@ -6,13 +6,13 @@ import styles from '../styles/Home.module.scss'
 
 function Home() {
   return (
-    <div>
+    <>
       <Header />
       <FilterBar />
       <div className={styles.cardContainer}>
         <Card />
       </div>
-    </div>
+    </>
   )
 }
 

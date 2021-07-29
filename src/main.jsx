@@ -1,11 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+
+import App from './App'
+
 import './styles/global.css'
-import Home from './pages/Home'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 )
