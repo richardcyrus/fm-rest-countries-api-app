@@ -75,6 +75,7 @@ Users should be able to:
 - [Set up Light and Dark Theme in React](https://milddev.com/react/set-up-light-and-dark-theme-in-react/)
 - [A Dark Mode Toggle with React and ThemeProvider](https://css-tricks.com/a-dark-mode-toggle-with-react-and-themeprovider/)
 - [Guide to Advanced CSS Selectors - Part One](https://moderncss.dev/guide-to-advanced-css-selectors-part-one/#attribute-selector)
+- [Test Your Web App in Dark Mode](https://www.cypress.io/blog/2019/12/13/test-your-web-app-in-dark-mode/)
 
 ## Author
 
