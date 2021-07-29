@@ -8,7 +8,10 @@
     "build": "vite build",
     "serve": "vite preview",
     "lint": "eslint --ignore-path .gitignore .",
-    "lint:fix": "eslint --ignore-path .gitignore --fix ."
+    "lint:fix": "eslint --ignore-path .gitignore --fix .",
+    "cypress:open": "cypress open",
+    "cypress:ct": "cypress open-ct",
+    "cypress:all": "cypress run"
   },
   "repository": {
     "type": "git",
