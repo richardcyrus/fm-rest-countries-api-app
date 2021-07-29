@@ -76,6 +76,7 @@ Users should be able to:
 - [A Dark Mode Toggle with React and ThemeProvider](https://css-tricks.com/a-dark-mode-toggle-with-react-and-themeprovider/)
 - [Guide to Advanced CSS Selectors - Part One](https://moderncss.dev/guide-to-advanced-css-selectors-part-one/#attribute-selector)
 - [Test Your Web App in Dark Mode](https://www.cypress.io/blog/2019/12/13/test-your-web-app-in-dark-mode/)
+- [Debouncing with React Hooks](https://dev.to/gabe_ragland/debouncing-with-react-hooks-jci)
 
 ## Author
 

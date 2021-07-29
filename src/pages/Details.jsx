@@ -1,4 +1,3 @@
-import Header from '../components/Header'
 import NavButton from '../components/NavButton'
 import BorderCountryButton from '../components/BorderCountryButton'
 
@@ -7,7 +6,6 @@ import styles from '../styles/Details.module.scss'
 function Details() {
   return (
     <>
-      <Header />
       <main id="main-content" className={styles.detailContainer}>
         <div className={styles.navContainer}>
           <NavButton to="/" />
