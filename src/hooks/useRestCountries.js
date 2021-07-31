@@ -4,7 +4,7 @@ import {
   getAllCountries,
   getCountryByName,
   getCountryByCode,
-} from '../utils/api'
+} from '../api/client'
 
 const formatPopulation = (value) => {
   return new Intl.NumberFormat('en-US', { style: 'decimal' }).format(value)
