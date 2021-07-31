@@ -97,7 +97,7 @@ export const getCountryByCode = (code) => {
 }
 
 export const getBorderCountryByCode = (code) => {
-  const fields = ['name']
+  const fields = ['name', 'alpha3Code']
 
   const queryParams = {
     fields: fields.join(';'),

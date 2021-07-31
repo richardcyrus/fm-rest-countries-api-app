@@ -3,7 +3,7 @@ import { VisuallyHidden } from '@reach/visually-hidden'
 
 import styles from './FilterInput.module.scss'
 
-function FilterInput() {
+function FilterInput({ searchCountryName, handleChange }) {
   return (
     <>
       <label className={styles.controlGroup}>
@@ -14,6 +14,8 @@ function FilterInput() {
           placeholder="Search for a country..."
           id="searchInput"
           className={styles.searchInput}
+          value={searchCountryName}
+          onChange={handleChange}
         />
         <VisuallyHidden>Search for a country</VisuallyHidden>
       </label>

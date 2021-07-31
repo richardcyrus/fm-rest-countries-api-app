@@ -3,10 +3,13 @@ import FilterListBox from './FilterListBox'
 
 import styles from './FilterBar.module.scss'
 
-function FilterBar() {
+function FilterBar(props) {
   return (
     <div className={styles.filterBar}>
-      <FilterInput />
+      <FilterInput
+        searchCountryName={props.searchCountryName}
+        handleChange={props.handleChange}
+      />
       <FilterListBox />
     </div>
   )

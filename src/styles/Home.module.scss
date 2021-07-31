@@ -1,16 +1,20 @@
 .card-container {
+  align-items: start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
+  justify-items: center;
   margin-block-end: 4.0625em;
   margin-inline: 3.5em;
 
   @media screen and (min-width: 48em) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     margin-block-end: 2.8125em;
     margin-inline: 2em;
   }
 
   @media screen and (min-width: 75em) {
     margin-inline: 5em;
+    grid-template-columns: repeat(4, minmax(264px, 1fr));
+    justify-items: start;
+    column-gap: 48px;
   }
 }

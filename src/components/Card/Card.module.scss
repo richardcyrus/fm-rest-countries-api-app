@@ -8,18 +8,19 @@
   box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.03);
   margin-block-start: 2.5em;
   overflow: hidden;
+  width: 16.5em;
+}
 
-  @media screen and (min-width: 48em) {
-    width: 20em;
-  }
+.card-image {
+  height: 160px;
+  width: 264px;
+}
 
-  @media screen and (min-width: 62em) {
-    width: 26em;
-  }
-
-  @media screen and (min-width: 75em) {
-    width: 16.5em;
-  }
+.flag {
+  margin-inline: auto;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
 }
 
 .cardBody {
