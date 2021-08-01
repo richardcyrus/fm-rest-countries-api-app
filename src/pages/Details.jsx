@@ -4,6 +4,7 @@ import { useCountryQuery } from '../hooks/useRestCountries'
 
 import NavButton from '../components/NavButton'
 import BorderCountryButton from '../components/BorderCountryButton'
+import Loading from '../components/Loading'
 
 import styles from '../styles/Details.module.scss'
 
@@ -14,7 +15,7 @@ function Details() {
   return (
     <>
       {isLoading ? (
-        <div>Loading...</div>
+        <Loading />
       ) : isError ? (
         <div>{error.message}</div>
       ) : (

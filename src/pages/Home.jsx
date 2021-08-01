@@ -5,6 +5,7 @@ import useDebounce from '../hooks/useDebounce'
 import FilterInput from '../components/FilterInput'
 import FilterListBox from '../components/FilterListBox'
 import Card from '../components/Card'
+import Loading from '../components/Loading'
 
 import styles from '../styles/Home.module.scss'
 
@@ -28,7 +29,7 @@ function Home() {
           <FilterListBox />
         </div>
         {isLoading ? (
-          <div>Loading...</div>
+          <Loading />
         ) : isError ? (
           <div>{error.message}</div>
         ) : (
