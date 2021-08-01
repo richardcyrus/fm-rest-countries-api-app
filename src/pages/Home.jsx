@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { useCountriesQuery } from '../hooks/useRestCountries'
 import useDebounce from '../hooks/useDebounce'
 
-import FilterBar from '../components/FilterBar/FilterBar'
+import FilterInput from '../components/FilterInput'
+import FilterListBox from '../components/FilterListBox'
 import Card from '../components/Card'
 
 import styles from '../styles/Home.module.scss'
@@ -12,17 +13,20 @@ function Home() {
   const debouncedTerm = useDebounce(searchCountryName)
   const { data, error, isLoading, isError } = useCountriesQuery(debouncedTerm)
 
-  const handleChange = (evt) => {
+  const onInputChanged = (evt) => {
     setSearchCountryName(evt.target.value)
   }
 
   return (
     <>
       <main id="main-content">
-        <FilterBar
-          searchCountryName={searchCountryName}
-          handleChange={handleChange}
-        />
+        <div className={styles.filterBar}>
+          <FilterInput
+            searchCountryName={searchCountryName}
+            onInputChanged={onInputChanged}
+          />
+          <FilterListBox />
+        </div>
         {isLoading ? (
           <div>Loading...</div>
         ) : isError ? (
