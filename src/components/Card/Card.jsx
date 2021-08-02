@@ -16,6 +16,7 @@ function Card({ flag, name, alpha3Code, capital, region, population }) {
             className={styles.flag}
             src={flag}
             alt={`Flag of ${name}`}
+            loading="lazy"
             data-test={`country-${alpha3Code}-flag`}
           />
         </div>

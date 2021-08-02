@@ -31,6 +31,7 @@ function Details() {
               <img
                 className={styles.flag}
                 src={country.flag}
+                loading="lazy"
                 alt={`Flag of ${country.name}`}
               />
             </div>
