@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 import { Listbox } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
@@ -40,6 +42,16 @@ function FilterListBox({ selectedRegion, onFilterChanged }) {
       </div>
     </Listbox>
   )
+}
+
+FilterListBox.propTypes = {
+  selectedRegion: PropTypes.shape({
+    type: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    unavailable: PropTypes.bool.isRequired,
+  }).isRequired,
+  onFilterChanged: PropTypes.func.isRequired,
 }
 
 export default FilterListBox

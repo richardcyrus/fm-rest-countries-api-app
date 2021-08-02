@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 import { SearchIcon } from '@heroicons/react/outline'
 import { VisuallyHidden } from '@reach/visually-hidden'
 
@@ -21,6 +23,11 @@ function FilterInput({ searchCountryName, onInputChanged }) {
       </label>
     </>
   )
+}
+
+FilterInput.propTypes = {
+  searchCountryName: PropTypes.string.isRequired,
+  onInputChanged: PropTypes.func.isRequired,
 }
 
 export default FilterInput

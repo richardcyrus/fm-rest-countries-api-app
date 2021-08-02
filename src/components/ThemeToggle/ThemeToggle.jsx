@@ -1,4 +1,4 @@
-import { func, string } from 'prop-types'
+import PropTypes from 'prop-types'
 
 import { MoonIcon } from '@heroicons/react/outline'
 
@@ -14,8 +14,8 @@ function ThemeToggle({ theme, toggleTheme }) {
 }
 
 ThemeToggle.propTypes = {
-  theme: string.isRequired,
-  toggleTheme: func.isRequired,
+  theme: PropTypes.string.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
 }
 
 export default ThemeToggle

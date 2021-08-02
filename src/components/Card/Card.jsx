@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import styles from './Card.module.scss'
 
@@ -29,6 +30,15 @@ function Card({ flag, name, alpha3Code, capital, region, population }) {
       </div>
     </Link>
   )
+}
+
+Card.propTypes = {
+  flag: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  alpha3Code: PropTypes.string.isRequired,
+  capital: PropTypes.string,
+  region: PropTypes.string,
+  population: PropTypes.string,
 }
 
 export default Card
