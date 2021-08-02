@@ -4,25 +4,38 @@ import {
   getAllCountries,
   getCountryByName,
   getCountryByCode,
+  getCountriesByRegion,
 } from '../api/client'
 
 const formatPopulation = (value) => {
   return new Intl.NumberFormat('en-US', { style: 'decimal' }).format(value)
 }
+
 const searchCountries = ({ queryKey }) => {
   // eslint-disable-next-line no-unused-vars
-  const [_key, { term }] = queryKey
-  // console.log(term)
+  const [_key, { params }] = queryKey
 
-  if (typeof term === 'undefined' || term === '') {
+  if (typeof params === 'undefined' || params === '') {
     return getAllCountries()
   }
 
-  // console.log(term)
-  return getCountryByName(term)
+  if (
+    Object.prototype.hasOwnProperty.call(params, 'type') &&
+    params.type === 'region'
+  ) {
+    return getCountriesByRegion(params.value)
+  }
+
+  if (
+    Object.prototype.hasOwnProperty.call(params, 'type') &&
+    params.type === 'search'
+  ) {
+    return getCountryByName(params.value)
+  }
 }
-export function useCountriesQuery(term) {
-  return useQuery(['countries', { term }], searchCountries, {
+
+export function useCountriesQuery(params) {
+  return useQuery(['countries', { params }], searchCountries, {
     select: useCallback(
       (data) => ({
         countries: data.map((country) => ({
