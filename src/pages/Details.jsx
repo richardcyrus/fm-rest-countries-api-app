@@ -10,6 +10,7 @@ import styles from '../styles/Details.module.scss'
 
 function Details() {
   const { code } = useParams()
+
   const { data: country, error, isLoading, isError } = useCountryQuery(code)
 
   return (
@@ -17,7 +18,9 @@ function Details() {
       {isLoading ? (
         <Loading />
       ) : isError ? (
-        <div>{error.message}</div>
+        <main id="main-content" className={styles.detailContainer}>
+          <div>{error.message}</div>
+        </main>
       ) : (
         <main id="main-content" className={styles.detailContainer}>
           <div className={styles.navContainer}>
@@ -73,16 +76,16 @@ function Details() {
                   </div>
                 </dl>
               </div>
-              <div className={styles.borderCountries}>
-                <h3 className={styles.borderCountiesTitle}>
-                  Border Countries:
-                </h3>
-                {country.borders.map((code, i) => (
-                  <BorderCountryButton key={i} to={`/details/${code}`}>
-                    {code}
-                  </BorderCountryButton>
-                ))}
-              </div>
+              {country.borders.length > 0 ? (
+                <div className={styles.borderCountries}>
+                  <h3 className={styles.borderCountiesTitle}>
+                    Border Countries:
+                  </h3>
+                  {country.borders.map((code, i) => (
+                    <BorderCountryButton key={i} code={code} />
+                  ))}
+                </div>
+              ) : null}
             </div>
           </div>
         </main>

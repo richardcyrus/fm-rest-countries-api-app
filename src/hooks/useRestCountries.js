@@ -5,6 +5,7 @@ import {
   getCountryByName,
   getCountryByCode,
   getCountriesByRegion,
+  getBorderCountryByCode,
 } from '../api/client'
 
 const formatPopulation = (value) => {
@@ -73,4 +74,8 @@ export const useCountryQuery = (code) => {
       []
     ),
   })
+}
+
+export const useBorderCountryQuery = (code) => {
+  return useQuery(['borderCountry', [code]], () => getBorderCountryByCode(code))
 }
