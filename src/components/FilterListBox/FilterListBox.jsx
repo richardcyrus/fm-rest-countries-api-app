@@ -21,8 +21,9 @@ function FilterListBox({ selectedRegion, onFilterChanged }) {
       className={styles.listBox}
       value={selectedRegion}
       onChange={onFilterChanged}
+      data-test="listbox"
     >
-      <Listbox.Button className={styles.button}>
+      <Listbox.Button className={styles.button} data-test="listbox-button">
         {selectedRegion.name}
         <ChevronDownIcon className={styles.icon} />
       </Listbox.Button>
@@ -34,6 +35,7 @@ function FilterListBox({ selectedRegion, onFilterChanged }) {
               value={region}
               disabled={region.unavailable}
               className={({ active }) => `${active ? styles.active : ''}`}
+              data-test="listbox-option"
             >
               {region.name}
             </Listbox.Option>

@@ -35,7 +35,12 @@ function Details() {
               />
             </div>
             <div className={styles.countryDetails}>
-              <h2 className={styles.countryName}>{country.name}</h2>
+              <h2
+                className={styles.countryName}
+                data-test={`country-${country.alpha3Code}-name`}
+              >
+                {country.name}
+              </h2>
               <div className={styles.countryFacts}>
                 <dl id="fact-group-left">
                   <div className={styles.factGroup}>

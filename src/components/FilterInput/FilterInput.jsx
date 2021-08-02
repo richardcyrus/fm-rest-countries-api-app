@@ -18,6 +18,7 @@ function FilterInput({ searchCountryName, onInputChanged }) {
           className={styles.searchInput}
           value={searchCountryName}
           onChange={onInputChanged}
+          data-test="search-input"
         />
         <VisuallyHidden>Search for a country</VisuallyHidden>
       </label>

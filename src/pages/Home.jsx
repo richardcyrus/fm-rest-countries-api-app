@@ -55,7 +55,7 @@ function Home() {
             <div>{error.message}</div>
           </div>
         ) : (
-          <div className={styles.cardContainer}>
+          <div className={styles.cardContainer} data-test="card-list">
             {data.countries.map((country, i) => (
               <Card key={i} {...country} />
             ))}

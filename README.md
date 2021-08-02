@@ -78,6 +78,7 @@ Users should be able to:
 - [Test Your Web App in Dark Mode](https://www.cypress.io/blog/2019/12/13/test-your-web-app-in-dark-mode/)
 - [Debouncing with React Hooks](https://dev.to/gabe_ragland/debouncing-with-react-hooks-jci)
 - [React Query Data Transformations](https://tkdodo.eu/blog/react-query-data-transformations)
+- [Hints for Adding Data-cy Attributes for Cypress Testing](https://haase1020.medium.com/hints-for-adding-data-cy-attributes-for-cypress-testing-998e8f64f325)
 
 ## Author
 

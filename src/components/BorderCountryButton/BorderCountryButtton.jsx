@@ -20,7 +20,11 @@ function BorderCountryButton({ code }) {
       ) : isError ? (
         <div>{error.message}</div>
       ) : (
-        <Link to={`/details/${country.alpha3Code}`} className={styles.button}>
+        <Link
+          to={`/details/${country.alpha3Code}`}
+          className={styles.button}
+          data-test={`border-country-${code}-link`}
+        >
           {country.name}
         </Link>
       )}
