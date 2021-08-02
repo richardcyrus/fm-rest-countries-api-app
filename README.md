@@ -32,6 +32,17 @@ Users should be able to:
 
 ![Reference preview](./design/reference/desktop-preview.jpg)
 
+#### Project Screenshots
+
+- [Desktop Home Light](./design/screenshots/desktop-screenshot-home-light.png)
+- [Desktop Home Dark](./design/screenshots/desktop-screenshot-home-dark.png)
+- [Desktop Detail Light](./design/screenshots/desktop-screenshot-detail-light.png)
+- [Desktop Detail Dark](./design/screenshots/desktop-screenshot-detail-dark.png)
+- [Mobile Home Light](./design/screenshots/mobile-screenshot-home-light.png)
+- [Mobile Home Dark](./design/screenshots/mobile-screenshot-home-dark.png)
+- [Mobile Detail Light](./design/screenshots/mobile-screenshot-detail-light.png)
+- [Mobile Detail Dark](./design/screenshots/mobile-screenshot-detail-dark.png)
+
 #### Reference images
 
 - [Desktop Home Light](./design/reference/desktop-design-home-light.jpg)
