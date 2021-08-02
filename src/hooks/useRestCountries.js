@@ -29,10 +29,13 @@ const searchCountries = ({ queryKey }) => {
 
   if (
     Object.prototype.hasOwnProperty.call(params, 'type') &&
-    params.type === 'search'
+    params.type === 'search' &&
+    params.value !== ''
   ) {
     return getCountryByName(params.value)
   }
+
+  return getAllCountries()
 }
 
 export function useCountriesQuery(params) {
