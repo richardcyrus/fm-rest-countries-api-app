@@ -6,12 +6,36 @@ import { ChevronDownIcon } from '@heroicons/react/solid'
 import styles from './FilterListBox.module.scss'
 
 const regions = [
-  { type: 'region', name: 'Africa', value: 'africa', unavailable: false },
-  { type: 'region', name: 'Americas', value: 'americas', unavailable: false },
-  { type: 'region', name: 'Asia', value: 'asia', unavailable: false },
-  { type: 'region', name: 'Europe', value: 'europe', unavailable: false },
-  { type: 'region', name: 'Oceania', value: 'oceania', unavailable: false },
-  { type: 'region', name: 'Polar', value: 'polar', unavailable: false },
+  {
+    id: 1,
+    type: 'region',
+    name: 'Africa',
+    value: 'africa',
+    unavailable: false,
+  },
+  {
+    id: 2,
+    type: 'region',
+    name: 'Americas',
+    value: 'americas',
+    unavailable: false,
+  },
+  { id: 3, type: 'region', name: 'Asia', value: 'asia', unavailable: false },
+  {
+    id: 4,
+    type: 'region',
+    name: 'Europe',
+    value: 'europe',
+    unavailable: false,
+  },
+  {
+    id: 5,
+    type: 'region',
+    name: 'Oceania',
+    value: 'oceania',
+    unavailable: false,
+  },
+  { id: 6, type: 'region', name: 'Polar', value: 'polar', unavailable: false },
 ]
 
 function FilterListBox({ selectedRegion, onFilterChanged }) {
@@ -29,9 +53,9 @@ function FilterListBox({ selectedRegion, onFilterChanged }) {
       </Listbox.Button>
       <div className={styles.listOptionsContainer}>
         <Listbox.Options>
-          {regions.map((region, i) => (
+          {regions.map((region) => (
             <Listbox.Option
-              key={i}
+              key={region.id}
               value={region}
               disabled={region.unavailable}
               className={({ active }) => `${active ? styles.active : ''}`}

@@ -9,13 +9,14 @@ import Loading from '../components/Loading'
 
 import styles from '../styles/Home.module.scss'
 
-function Home() {
-  const filterDefault = {
-    name: 'Filter by Region',
-    value: 'default',
-    unavailable: true,
-  }
+const filterDefault = {
+  id: 0,
+  name: 'Filter by Region',
+  value: 'default',
+  unavailable: true,
+}
 
+function Home() {
   const [searchCountryName, setSearchCountryName] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedRegion, setSelectedRegion] = useState(filterDefault)
@@ -56,8 +57,8 @@ function Home() {
           </div>
         ) : (
           <div className={styles.cardContainer} data-test="card-list">
-            {data.countries.map((country, i) => (
-              <Card key={i} {...country} />
+            {data.countries.map((country) => (
+              <Card key={country.alpha3Code} {...country} />
             ))}
           </div>
         )}

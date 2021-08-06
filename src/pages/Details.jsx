@@ -87,8 +87,8 @@ function Details() {
                   <h3 className={styles.borderCountiesTitle}>
                     Border Countries:
                   </h3>
-                  {country.borders.map((code, i) => (
-                    <BorderCountryButton key={i} code={code} />
+                  {country.borders.map((code) => (
+                    <BorderCountryButton key={code} code={code} />
                   ))}
                 </div>
               ) : null}
