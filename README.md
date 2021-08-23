@@ -56,6 +56,7 @@ Users should be able to:
 
 ### Links
 
+- [Solution](https://www.frontendmentor.io/solutions/rest-countries-api-react-react-query-axios-onvnxlOSc)
 - [Repository](https://github.com/richardcyrus/fm-rest-countries-api-app)
 - [Live Site](https://fm-rest-countries-api-app.vercel.app/)
 
