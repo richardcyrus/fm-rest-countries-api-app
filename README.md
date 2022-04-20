@@ -17,7 +17,7 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 
 ### The challenge
 
-To integrate with the [REST Countries API](https://restcountries.eu) to pull country data and display it like in the reference designs.
+To integrate with the [REST Countries API](https://restcountries.com/) to pull country data and display it like in the reference designs.
 
 Users should be able to:
 

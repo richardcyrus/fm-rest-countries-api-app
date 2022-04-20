@@ -4,7 +4,7 @@ const client = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  baseURL: 'https://restcountries.eu/rest/v2',
+  baseURL: 'https://restcountries.com/v2',
   responseType: 'json',
 })
 
@@ -19,7 +19,7 @@ export const getAllCountries = () => {
   ]
 
   const queryParams = {
-    fields: fields.join(';'),
+    fields: fields.join(','),
   }
 
   return client
@@ -38,7 +38,7 @@ export const getCountriesByRegion = (region) => {
   ]
 
   const queryParams = {
-    fields: fields.join(';'),
+    fields: fields.join(','),
   }
 
   return client
@@ -63,7 +63,7 @@ export const getCountryByName = (name) => {
   ]
 
   const queryParams = {
-    fields: fields.join(';'),
+    fields: fields.join(','),
   }
 
   return client
@@ -88,7 +88,7 @@ export const getCountryByCode = (code) => {
   ]
 
   const queryParams = {
-    fields: fields.join(';'),
+    fields: fields.join(','),
   }
 
   return client
@@ -100,7 +100,7 @@ export const getBorderCountryByCode = (code) => {
   const fields = ['name', 'alpha3Code']
 
   const queryParams = {
-    fields: fields.join(';'),
+    fields: fields.join(','),
   }
 
   return client
