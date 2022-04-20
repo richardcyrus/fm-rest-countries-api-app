@@ -45,8 +45,10 @@ button {
   cursor: pointer;
   font-family: inherit;
   padding: 0;
+}
 
-  @media screen and (-ms-high-contrast: active) {
+@media screen and (-ms-high-contrast: active) {
+  button {
     border: 2px solid currentColor;
   }
 }
