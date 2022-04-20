@@ -107,7 +107,6 @@ tags
 #
 # Project ignores
 #
-.idea
 .history
 *.map
 session.sqlite
