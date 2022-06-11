@@ -6,12 +6,7 @@ import styles from './ThemeToggle.module.scss'
 
 function ThemeToggle({ theme, toggleTheme }) {
   return (
-    <button
-      type="button"
-      className={styles.button}
-      onClick={toggleTheme}
-      data-test="theme-toggle"
-    >
+    <button type="button" className={styles.button} onClick={toggleTheme}>
       <MoonIcon className={styles.themeSwitchIcon} />
       Dark Mode
     </button>

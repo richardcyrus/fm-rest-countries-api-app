@@ -8,14 +8,23 @@ const client = axios.create({
   responseType: 'json',
 })
 
+export const getRegionList = () => {
+  const queryParams = { fields: 'region' }
+
+  return client
+    .get('/all', { params: queryParams })
+    .then((response) => response.data)
+}
+
 export const getAllCountries = () => {
   const fields = [
-    'name',
+    'alpha2Code',
     'alpha3Code',
     'capital',
-    'region',
-    'population',
     'flag',
+    'name',
+    'population',
+    'region',
   ]
 
   const queryParams = {
@@ -29,12 +38,13 @@ export const getAllCountries = () => {
 
 export const getCountriesByRegion = (region) => {
   const fields = [
-    'name',
+    'alpha2Code',
     'alpha3Code',
     'capital',
-    'region',
-    'population',
     'flag',
+    'name',
+    'population',
+    'region',
   ]
 
   const queryParams = {
@@ -48,18 +58,13 @@ export const getCountriesByRegion = (region) => {
 
 export const getCountryByName = (name) => {
   const fields = [
-    'name',
-    'topLevelDomain',
+    'alpha2Code',
     'alpha3Code',
     'capital',
-    'region',
-    'subregion',
-    'population',
-    'borders',
-    'nativeName',
-    'currencies',
-    'languages',
     'flag',
+    'name',
+    'population',
+    'region',
   ]
 
   const queryParams = {
@@ -73,18 +78,19 @@ export const getCountryByName = (name) => {
 
 export const getCountryByCode = (code) => {
   const fields = [
-    'name',
-    'topLevelDomain',
+    'alpha2Code',
     'alpha3Code',
+    'borders',
     'capital',
+    'currencies',
+    'flag',
+    'languages',
+    'name',
+    'nativeName',
+    'population',
     'region',
     'subregion',
-    'population',
-    'borders',
-    'nativeName',
-    'currencies',
-    'languages',
-    'flag',
+    'topLevelDomain',
   ]
 
   const queryParams = {
@@ -97,7 +103,7 @@ export const getCountryByCode = (code) => {
 }
 
 export const getBorderCountryByCode = (code) => {
-  const fields = ['name', 'alpha3Code']
+  const fields = ['alpha2Code', 'alpha3Code', 'name']
 
   const queryParams = {
     fields: fields.join(','),

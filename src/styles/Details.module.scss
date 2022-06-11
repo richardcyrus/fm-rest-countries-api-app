@@ -85,6 +85,7 @@
 
 .fact-group {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .fact-label {
@@ -135,5 +136,6 @@
 
   @media screen and (min-width: 75em) {
     flex-basis: auto;
+    margin-block-end: 0;
   }
 }

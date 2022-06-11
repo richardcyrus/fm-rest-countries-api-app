@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useCountriesQuery } from '../hooks/useRestCountries'
+import { useRegionsQuery, useCountriesQuery } from '../hooks/useRestCountries'
+import { useQueryClient } from 'react-query'
 import useDebounce from '../hooks/useDebounce'
 
 import FilterInput from '../components/FilterInput'
@@ -10,22 +11,16 @@ import Loading from '../components/Loading'
 import styles from '../styles/Home.module.scss'
 
 const filterDefault = {
-  id: 0,
-  name: 'Filter by Region',
-  value: 'default',
-  unavailable: true,
+  default: 'Filter by Region',
 }
 
 function Home() {
   const [searchCountryName, setSearchCountryName] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedRegion, setSelectedRegion] = useState(filterDefault)
-
-  const debouncedTerm = useDebounce(searchTerm)
-  const { data, error, isLoading, isError } = useCountriesQuery(debouncedTerm)
+  const [selectedRegion, setSelectedRegion] = useState('default')
 
   const onInputChanged = (evt) => {
-    setSelectedRegion(filterDefault)
+    setSelectedRegion('default')
     setSearchCountryName(evt.target.value)
     setSearchTerm({ type: 'search', value: evt.target.value })
   }
@@ -33,8 +28,18 @@ function Home() {
   const onFilterChanged = (region) => {
     setSearchCountryName('')
     setSelectedRegion(region)
-    setSearchTerm(region)
+    setSearchTerm({ type: 'region', value: region })
   }
+
+  const debouncedTerm = useDebounce(searchTerm)
+
+  const queryClient = useQueryClient()
+  queryClient.invalidateQueries()
+
+  const { data, error, isLoading, isError } = useCountriesQuery(debouncedTerm)
+  const { data: regionList } = useRegionsQuery()
+
+  const regions = { ...filterDefault, ...regionList.regions }
 
   return (
     <>
@@ -44,10 +49,13 @@ function Home() {
             searchCountryName={searchCountryName}
             onInputChanged={onInputChanged}
           />
-          <FilterListBox
-            selectedRegion={selectedRegion}
-            onFilterChanged={onFilterChanged}
-          />
+          <div className="region-filter">
+            <FilterListBox
+              regions={regions}
+              selectedRegion={selectedRegion}
+              onFilterChanged={onFilterChanged}
+            />
+          </div>
         </div>
         {isLoading ? (
           <Loading />
@@ -56,7 +64,7 @@ function Home() {
             <div>{error.message}</div>
           </div>
         ) : (
-          <div className={styles.cardContainer} data-test="card-list">
+          <div className={styles.cardContainer}>
             {data.countries.map((country) => (
               <Card key={country.alpha3Code} {...country} />
             ))}

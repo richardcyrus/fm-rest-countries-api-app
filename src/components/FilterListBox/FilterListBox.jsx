@@ -1,82 +1,57 @@
 import PropTypes from 'prop-types'
 
-import { Listbox } from '@headlessui/react'
+import {
+  ListboxInput,
+  ListboxButton,
+  ListboxPopover,
+  ListboxList,
+  ListboxOption,
+} from '@reach/listbox'
+import { VisuallyHidden } from '@reach/visually-hidden'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
-import styles from './FilterListBox.module.scss'
+import '@reach/listbox/styles.css'
 
-const regions = [
-  {
-    id: 1,
-    type: 'region',
-    name: 'Africa',
-    value: 'africa',
-    unavailable: false,
-  },
-  {
-    id: 2,
-    type: 'region',
-    name: 'Americas',
-    value: 'americas',
-    unavailable: false,
-  },
-  { id: 3, type: 'region', name: 'Asia', value: 'asia', unavailable: false },
-  {
-    id: 4,
-    type: 'region',
-    name: 'Europe',
-    value: 'europe',
-    unavailable: false,
-  },
-  {
-    id: 5,
-    type: 'region',
-    name: 'Oceania',
-    value: 'oceania',
-    unavailable: false,
-  },
-  { id: 6, type: 'region', name: 'Polar', value: 'polar', unavailable: false },
-]
-
-function FilterListBox({ selectedRegion, onFilterChanged }) {
+function FilterListBox({ regions, selectedRegion, onFilterChanged }) {
   return (
-    <Listbox
-      as="div"
-      className={styles.listBox}
-      value={selectedRegion}
-      onChange={onFilterChanged}
-      data-test="listbox"
-    >
-      <Listbox.Button className={styles.button} data-test="listbox-button">
-        {selectedRegion.name}
-        <ChevronDownIcon className={styles.icon} />
-      </Listbox.Button>
-      <div className={styles.listOptionsContainer}>
-        <Listbox.Options>
-          {regions.map((region) => (
-            <Listbox.Option
-              key={region.id}
-              value={region}
-              disabled={region.unavailable}
-              className={({ active }) => `${active ? styles.active : ''}`}
-              data-test="listbox-option"
-            >
-              {region.name}
-            </Listbox.Option>
-          ))}
-        </Listbox.Options>
-      </div>
-    </Listbox>
+    <>
+      <VisuallyHidden id="region-filter-label">Filter by Region</VisuallyHidden>
+      <ListboxInput
+        name="region"
+        defaultValue={selectedRegion}
+        value={selectedRegion}
+        onChange={onFilterChanged}
+        required={true}
+      >
+        <ListboxButton
+          aria-labelledby="region-filter-label"
+          arrow={<ChevronDownIcon className="chevron-icon" />}
+        >
+          {regions[selectedRegion]}
+        </ListboxButton>
+        <ListboxPopover portal={false}>
+          <ListboxList>
+            {Object.keys(regions)
+              .sort()
+              .map((region) => (
+                <ListboxOption
+                  key={region}
+                  value={region}
+                  label={regions[region]}
+                >
+                  {regions[region]}
+                </ListboxOption>
+              ))}
+          </ListboxList>
+        </ListboxPopover>
+      </ListboxInput>
+    </>
   )
 }
 
 FilterListBox.propTypes = {
-  selectedRegion: PropTypes.shape({
-    type: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    unavailable: PropTypes.bool.isRequired,
-  }).isRequired,
+  regions: PropTypes.object.isRequired,
+  selectedRegion: PropTypes.string.isRequired,
   onFilterChanged: PropTypes.func.isRequired,
 }
 

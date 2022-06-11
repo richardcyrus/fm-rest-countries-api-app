@@ -71,7 +71,6 @@ Users should be able to:
 - Semantic HTML5 markup
 - [Axios](https://axios-http.com/)
 - [cypress](https://www.cypress.io/)
-- [headless UI](https://headlessui.dev/)
 - [Heroicons](https://heroicons.com)
 - [Vite.js](https://vitejs.dev/) - a build tool that aims to provide a faster and leaner development experience for modern web projects
 - [Reach UI](https://reach.tech/)

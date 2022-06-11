@@ -1,10 +1,17 @@
 :root {
+  --button-focus-background: #1a2229;
   --color-background: #fafafa;
-  --color-element-background: #ffffff;
+  --color-element-background: #fff;
   --color-input-content: #777575;
-  --color-input-placeholder: #777575;
+  --color-input-placeholder: #c4c4c4;
   --color-text: #111517;
   --font-family: 'Nunito Sans', sans-serif;
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-18: 1.125rem;
+  --font-size-22: 1.375rem;
+  --font-size-32: 2rem;
   --font-weight-black: 900;
   --font-weight-extra-light: 200;
   --font-weight-regular: 400;
@@ -15,11 +22,12 @@
 }
 
 .dark {
+  --button-focus-background: #999;
   --color-background: #202c36;
   --color-element-background: #2b3844;
-  --color-input-content: #ffffff;
-  --color-input-placeholder: #ffffff;
-  --color-text: #ffffff;
+  --color-input-content: #fff;
+  --color-input-placeholder: #fff;
+  --color-text: #fff;
   --input-focus-h: 207;
   --input-focus-l: 17%;
   --input-focus-s: 26%;
@@ -52,3 +60,127 @@ button {
     border: 2px solid currentColor;
   }
 }
+
+/* #region Filter Listbox Styles */
+.region-filter {
+  align-items: center;
+  background: var(--color-element-background);
+  border-radius: 5px;
+  box-shadow: 0 2px 9px 0 rgb(0 0 0 / 5%);
+  display: flex;
+  height: 3rem;
+  margin-block-start: 2.5rem;
+  margin-inline-start: 1rem;
+  position: relative;
+  width: 12.5rem;
+}
+
+@media screen and (min-width: 75em) {
+  .region-filter {
+    margin-block-start: 0;
+    margin-inline-start: auto;
+  }
+}
+
+[data-reach-listbox-input] {
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+[data-reach-listbox-arrow] {
+  align-self: center;
+  font-size: inherit;
+  margin-inline-end: 1.21875rem;
+  margin-inline-start: auto;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.chevron-icon {
+  display: block;
+  height: 0.875rem;
+}
+
+@media screen and (min-width: 75em) {
+  .chevron-icon {
+    height: 1rem;
+  }
+}
+
+[data-reach-listbox-button] {
+  align-items: center;
+  border-color: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.25rem;
+  margin-inline-start: 1.5rem;
+  outline: 3px solid transparent;
+  padding: 0;
+  width: 100%;
+}
+
+[data-reach-listbox-button][aria-expanded='true'] > [data-reach-listbox-arrow] {
+  transform: rotate(180deg);
+}
+
+@media screen and (min-width: 75em) {
+  [data-reach-listbox-button] {
+    font-size: var(--font-size-14);
+  }
+}
+
+[data-reach-listbox-popover] {
+  background: var(--color-element-background);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 9px 0 rgb(0 0 0 / 5%);
+  min-width: 12.5rem;
+  outline: none;
+  top: 3.25rem;
+}
+
+[data-reach-listbox-popover]:focus,
+[data-reach-listbox-popover]:focus-within {
+  box-shadow: 0 2px 9px 0 rgb(0 0 0 / 5%);
+  outline: 3px solid transparent;
+}
+
+[data-reach-listbox-list] {
+  padding-block: 1rem 0.5rem;
+}
+
+[data-reach-listbox-option] {
+  cursor: pointer;
+  font-size: var(--font-size-12);
+  letter-spacing: 0;
+  line-height: 1.25rem;
+  padding-block: 0.25rem;
+  padding-inline: 1.5rem;
+}
+
+[data-reach-listbox-option]:last-of-type {
+  margin-block-end: 0.25rem;
+}
+
+@media screen and (min-width: 75em) {
+  [data-reach-listbox-option] {
+    font-size: var(--font-size-14);
+  }
+}
+
+/* This is to hide the default entry from the selection list. */
+[data-reach-listbox-option][data-value='default'] {
+  display: none;
+}
+
+[data-reach-listbox-option][data-current-nav] {
+  background-color: hsl(
+    var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
+  );
+  color: #fff !important;
+}
+/* #endregion Filter Listbox Styles */

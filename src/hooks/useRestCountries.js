@@ -6,7 +6,9 @@ import {
   getCountryByCode,
   getCountriesByRegion,
   getBorderCountryByCode,
+  getRegionList,
 } from '../api/client'
+import slugify from '../utils/slugify'
 
 const formatPopulation = (value) => {
   return new Intl.NumberFormat('en-US', { style: 'decimal' }).format(value)
@@ -38,17 +40,32 @@ const searchCountries = ({ queryKey }) => {
   return getAllCountries()
 }
 
+export function useRegionsQuery() {
+  return useQuery('regions', getRegionList, {
+    select: useCallback(
+      (data) => ({
+        regions: data.reduce((acc, entry) => {
+          let slug = slugify(entry.region, ' ')
+          acc[slug] = entry.region
+          return acc
+        }, {}),
+      }),
+      []
+    ),
+  })
+}
+
 export function useCountriesQuery(params) {
   return useQuery(['countries', { params }], searchCountries, {
     select: useCallback(
       (data) => ({
         countries: data.map((country) => ({
           ...country,
+          flag: country.flag.includes('flagcdn')
+            ? country.flag
+            : `https://flagcdn.com/${country.alpha2Code.toLowerCase()}.svg`,
           population: formatPopulation(country.population),
         })),
-        regions: data.reduce((acc, country) => {
-          return new Set([...acc, country.region])
-        }, []),
       }),
       []
     ),
@@ -61,6 +78,9 @@ export const useCountryQuery = (code) => {
       (data) => ({
         ...data,
         population: formatPopulation(data.population),
+        flag: data.flag.includes('flagcdn')
+          ? data.flag
+          : `https://flagcdn.com/${data.alpha2Code.toLowerCase()}.svg`,
         topLevelDomains:
           data.topLevelDomain.length > 1
             ? data.topLevelDomain.join(', ')
@@ -70,9 +90,11 @@ export const useCountryQuery = (code) => {
             ? data.languages.map((lang) => lang.name).join(', ')
             : data.languages[0].name,
         currencies:
-          data.currencies.length > 1
-            ? data.currencies.map((cur) => cur.name).join(', ')
-            : data.currencies[0].name,
+          data.currencies && data.currencies.length > 1
+            ? data.currencies.map((money) => money.name).join(', ')
+            : data.currencies instanceof Array
+            ? data.currencies[0]?.name
+            : '',
       }),
       []
     ),

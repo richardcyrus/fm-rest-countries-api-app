@@ -8,9 +8,7 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
-        <h1 className={styles.title} data-test="page-title">
-          Where in the world?
-        </h1>
+        <h1 className={styles.title}>Where in the world?</h1>
         <div className={styles.themeSwitchContainer}>
           <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
         </div>

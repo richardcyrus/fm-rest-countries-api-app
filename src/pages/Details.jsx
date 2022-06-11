@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-
+import { useQueryClient } from 'react-query'
 import { useCountryQuery } from '../hooks/useRestCountries'
 
 import NavButton from '../components/NavButton'
@@ -10,6 +10,8 @@ import styles from '../styles/Details.module.scss'
 
 function Details() {
   const { code } = useParams()
+  const queryClient = useQueryClient()
+  queryClient.invalidateQueries()
 
   const { data: country, error, isLoading, isError } = useCountryQuery(code)
 
@@ -36,12 +38,7 @@ function Details() {
               />
             </div>
             <div className={styles.countryDetails}>
-              <h2
-                className={styles.countryName}
-                data-test={`country-${country.alpha3Code}-name`}
-              >
-                {country.name}
-              </h2>
+              <h2 className={styles.countryName}>{country.name}</h2>
               <div className={styles.countryFacts}>
                 <dl id="fact-group-left">
                   <div className={styles.factGroup}>
@@ -60,10 +57,12 @@ function Details() {
                     <dt className={styles.factLabel}>Sub Region</dt>
                     <dd className={styles.factValue}>{country.subregion}</dd>
                   </div>
-                  <div className={styles.factGroup}>
-                    <dt className={styles.factLabel}>Capital</dt>
-                    <dd className={styles.factValue}>{country.capital}</dd>
-                  </div>
+                  {country.capital && country.capital.length > 0 ? (
+                    <div className={styles.factGroup}>
+                      <dt className={styles.factLabel}>Capital</dt>
+                      <dd className={styles.factValue}>{country.capital}</dd>
+                    </div>
+                  ) : null}
                 </dl>
                 <dl id="fact-group-right" className={styles.factGroupRight}>
                   <div className={styles.factGroup}>
@@ -72,17 +71,19 @@ function Details() {
                       {country.topLevelDomains}
                     </dd>
                   </div>
-                  <div className={styles.factGroup}>
-                    <dt className={styles.factLabel}>Currencies</dt>
-                    <dd className={styles.factValue}>{country.currencies}</dd>
-                  </div>
+                  {country.currencies && country.currencies.length > 0 ? (
+                    <div className={styles.factGroup}>
+                      <dt className={styles.factLabel}>Currencies</dt>
+                      <dd className={styles.factValue}>{country.currencies}</dd>
+                    </div>
+                  ) : null}
                   <div className={styles.factGroup}>
                     <dt className={styles.factLabel}>Languages</dt>
                     <dd className={styles.factValue}>{country.languages}</dd>
                   </div>
                 </dl>
               </div>
-              {country.borders.length > 0 ? (
+              {country.borders && country.borders.length > 0 ? (
                 <div className={styles.borderCountries}>
                   <h3 className={styles.borderCountiesTitle}>
                     Border Countries:

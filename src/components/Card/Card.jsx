@@ -5,56 +5,33 @@ import styles from './Card.module.scss'
 
 function Card({ flag, name, alpha3Code, capital, region, population }) {
   return (
-    <Link
-      to={`/details/${alpha3Code}`}
-      className={styles.cardLink}
-      data-test={`country-${alpha3Code}-card`}
-    >
-      <div className={styles.card} data-test="card">
+    <Link to={`/details/${alpha3Code}`} className={styles.cardLink}>
+      <div className={styles.card}>
         <div className={styles.cardImage}>
           <img
             className={styles.flag}
             src={flag}
             alt={`Flag of ${name}`}
             loading="lazy"
-            data-test={`country-${alpha3Code}-flag`}
           />
         </div>
         <div className={styles.cardBody}>
-          <h2
-            className={styles.countryName}
-            data-test={`country-${alpha3Code}-name`}
-          >
-            {name}
-          </h2>
+          <h2 className={styles.countryName}>{name}</h2>
           <dl className={styles.facts}>
             <div className={styles.factGroup}>
               <dt className={styles.factLabel}>Population</dt>
-              <dd
-                className={styles.factValue}
-                data-test={`country-${alpha3Code}-population`}
-              >
-                {population}
-              </dd>
+              <dd className={styles.factValue}>{population}</dd>
             </div>
             <div className={styles.factGroup}>
               <dt className={styles.factLabel}>Region</dt>
-              <dd
-                className={styles.factValue}
-                data-test={`country-${alpha3Code}-region`}
-              >
-                {region}
-              </dd>
+              <dd className={styles.factValue}>{region}</dd>
             </div>
-            <div className={styles.factGroup}>
-              <dt className={styles.factLabel}>Capital</dt>
-              <dd
-                className={styles.factValue}
-                data-test={`country-${alpha3Code}-capital`}
-              >
-                {capital}
-              </dd>
-            </div>
+            {capital && capital.length > 0 ? (
+              <div className={styles.factGroup}>
+                <dt className={styles.factLabel}>Capital</dt>
+                <dd className={styles.factValue}>{capital}</dd>
+              </div>
+            ) : null}
           </dl>
         </div>
       </div>
