@@ -7,13 +7,22 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write ."
+    "format": "prettier --ignore-path .gitignore --write .",
+    "lint": "eslint --ignore-path .gitignore \"**/*.js?(x)\"",
+    "fix": "eslint --fix --ignore-path .gitignore \"**/*.js?(x)\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/richardcyrus/fm-rest-countries-api-app.git"
   },
-  "keywords": [],
+  "keywords": [
+    "css-custom-properties",
+    "frontend-mentor",
+    "heroicons-react",
+    "html5",
+    "reach-ui",
+    "reactjs"
+  ],
   "author": "Richard Cyrus <richard.cyrus@rcyrus.com> (https://www.richardcyrus.com)",
   "license": "MIT",
   "bugs": {
@@ -35,6 +44,10 @@
     "@types/react": "^17.0.45",
     "@types/react-dom": "^17.0.17",
     "@vitejs/plugin-react": "^1.3.2",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "^2.26.0",
     "msw": "^0.42.1",
     "prettier": "^2.6.2",
     "sass": "^1.52.3",

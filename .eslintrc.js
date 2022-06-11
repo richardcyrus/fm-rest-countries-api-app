@@ -4,13 +4,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: [
-    'react-app',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:cypress/recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['react-app', 'plugin:jsx-a11y/recommended', 'prettier'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -18,7 +12,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['jsx-a11y'],
   rules: {
     'import/no-extraneous-dependencies': [
       'error',
@@ -52,7 +46,6 @@ module.exports = {
     ],
     'react/jsx-props-no-spreading': 0,
     'react/prop-types': 0,
-    'prettier/prettier': 'error',
   },
   settings: {
     react: {
