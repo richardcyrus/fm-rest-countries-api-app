@@ -45,6 +45,8 @@ export function useRegionsQuery() {
     select: useCallback(
       (data) => ({
         regions: data.reduce((acc, entry) => {
+          // We set the separator to a literal space, so it is encoded
+          // correctly when sent to the API.
           let slug = slugify(entry.region, ' ')
           acc[slug] = entry.region
           return acc
