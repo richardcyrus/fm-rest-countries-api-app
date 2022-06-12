@@ -1,11 +1,20 @@
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import VisuallyHidden from '@reach/visually-hidden'
 
 import styles from './Card.module.scss'
 
 function Card({ flag, name, alpha3Code, capital, region, population }) {
   return (
-    <Link to={`/details/${alpha3Code}`} className={styles.cardLink}>
+    <Link
+      to={`/details/${alpha3Code}`}
+      aria-labelledby={`country-card-${alpha3Code.toLowerCase()}`}
+      className={styles.cardLink}
+      title={name}
+    >
+      <VisuallyHidden id={`country-card-${alpha3Code.toLowerCase()}`}>
+        {name}
+      </VisuallyHidden>
       <div className={styles.card}>
         <div className={styles.cardImage}>
           <img

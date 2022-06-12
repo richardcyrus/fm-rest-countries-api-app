@@ -7,7 +7,7 @@ import {
   ListboxList,
   ListboxOption,
 } from '@reach/listbox'
-import { VisuallyHidden } from '@reach/visually-hidden'
+import VisuallyHidden from '@reach/visually-hidden'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
 import '@reach/listbox/styles.css'

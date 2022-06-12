@@ -90,6 +90,8 @@ Users should be able to:
 - [Debouncing with React Hooks](https://dev.to/gabe_ragland/debouncing-with-react-hooks-jci)
 - [React Query Data Transformations](https://tkdodo.eu/blog/react-query-data-transformations)
 - [Hints for Adding Data-cy Attributes for Cypress Testing](https://haase1020.medium.com/hints-for-adding-data-cy-attributes-for-cypress-testing-998e8f64f325)
+- [Dynamically Importing Components with React.lazy](https://www.aleksandrhovhannisyan.com/blog/react-lazy-dynamic-imports/)
+- [Example setup for using msw with vitejs](https://github.com/msutkowski/msw-ts-vitejs)
 
 ## Author
 

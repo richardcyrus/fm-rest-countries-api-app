@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRegionsQuery, useCountriesQuery } from '../hooks/useRestCountries'
 import { useQueryClient } from 'react-query'
 import useDebounce from '../hooks/useDebounce'
@@ -34,7 +34,10 @@ function Home() {
   const debouncedTerm = useDebounce(searchTerm)
 
   const queryClient = useQueryClient()
-  queryClient.invalidateQueries()
+
+  useEffect(() => {
+    queryClient.invalidateQueries('regions')
+  }, [])
 
   const { data, error, isLoading, isError } = useCountriesQuery(debouncedTerm)
   const { data: regionList } = useRegionsQuery()

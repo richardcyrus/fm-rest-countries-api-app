@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQueryClient } from 'react-query'
 import { useCountryQuery } from '../hooks/useRestCountries'
@@ -10,8 +11,12 @@ import styles from '../styles/Details.module.scss'
 
 function Details() {
   const { code } = useParams()
+
   const queryClient = useQueryClient()
-  queryClient.invalidateQueries()
+
+  useEffect(() => {
+    queryClient.invalidateQueries()
+  }, [])
 
   const { data: country, error, isLoading, isError } = useCountryQuery(code)
 

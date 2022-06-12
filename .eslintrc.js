@@ -4,7 +4,12 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['react-app', 'plugin:jsx-a11y/recommended', 'prettier'],
+  extends: [
+    'react-app',
+    'plugin:jsx-a11y/recommended',
+    'plugin:cypress/recommended',
+    'prettier',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -12,7 +17,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['jsx-a11y'],
+  plugins: ['jsx-a11y', 'cypress'],
   rules: {
     'import/no-extraneous-dependencies': [
       'error',
