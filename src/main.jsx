@@ -10,6 +10,9 @@ import './styles/global.scss'
 
 async function prepare() {
   if (process.env.NODE_ENV === 'development') {
+    const { default: axe } = await import('@axe-core/react')
+    axe(React, ReactDOM, 1000, { disableDeduplicate: true })
+
     const { worker } = await import('./mocks/browser')
     return worker.start({ onUnhandledRequest: 'bypass' })
   }

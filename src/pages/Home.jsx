@@ -44,7 +44,7 @@ function Home() {
 
   return (
     <>
-      <main id="main-content" className="main-content">
+      <main id="main-content" className="main-content" role="main">
         <div className="filter-bar">
           <label className="control-group">
             <VisuallyHidden>Search for a country</VisuallyHidden>

@@ -22,11 +22,11 @@ function Details() {
       {isLoading ? (
         <Loading />
       ) : isError ? (
-        <main id="main-content" className="country-detail-content">
+        <main role="main" id="main-content" className="country-detail-content">
           <div>{error.message}</div>
         </main>
       ) : (
-        <main id="main-content" className="country-detail-content">
+        <main role="main" id="main-content" className="country-detail-content">
           <div className="nav-container">
             <Link to="/" className="button nav-button">
               <ArrowNarrowLeftIcon className="back-arrow-icon" />
