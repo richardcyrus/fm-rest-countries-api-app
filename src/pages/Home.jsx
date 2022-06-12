@@ -2,19 +2,19 @@ import { useState, useEffect } from 'react'
 import { useRegionsQuery, useCountriesQuery } from '../hooks/useRestCountries'
 import { useQueryClient } from 'react-query'
 import useDebounce from '../hooks/useDebounce'
+import { SearchIcon } from '@heroicons/react/outline'
+import VisuallyHidden from '@reach/visually-hidden'
 
-import FilterInput from '../components/FilterInput'
 import FilterListBox from '../components/FilterListBox'
 import Card from '../components/Card'
 import Loading from '../components/Loading'
-
-import styles from '../styles/Home.module.scss'
 
 const filterDefault = {
   default: 'Filter by Region',
 }
 
 function Home() {
+  const queryClient = useQueryClient()
   const [searchCountryName, setSearchCountryName] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedRegion, setSelectedRegion] = useState('default')
@@ -33,11 +33,9 @@ function Home() {
 
   const debouncedTerm = useDebounce(searchTerm)
 
-  const queryClient = useQueryClient()
-
   useEffect(() => {
     queryClient.invalidateQueries('regions')
-  }, [])
+  }, [queryClient])
 
   const { data, error, isLoading, isError } = useCountriesQuery(debouncedTerm)
   const { data: regionList } = useRegionsQuery()
@@ -46,12 +44,21 @@ function Home() {
 
   return (
     <>
-      <main id="main-content">
-        <div className={styles.filterBar}>
-          <FilterInput
-            searchCountryName={searchCountryName}
-            onInputChanged={onInputChanged}
-          />
+      <main id="main-content" className="main-content">
+        <div className="filter-bar">
+          <label className="control-group">
+            <VisuallyHidden>Search for a country</VisuallyHidden>
+            <SearchIcon className="search-icon" />
+            <input
+              type="text"
+              name="search-text"
+              placeholder="Search for a country..."
+              id="search-country"
+              className="search-input"
+              value={searchCountryName}
+              onChange={onInputChanged}
+            />
+          </label>
           <div className="region-filter">
             <FilterListBox
               regions={regions}
@@ -63,11 +70,11 @@ function Home() {
         {isLoading ? (
           <Loading />
         ) : isError ? (
-          <div className={styles.cardContainer}>
+          <div className="card-container">
             <div>{error.message}</div>
           </div>
         ) : (
-          <div className={styles.cardContainer}>
+          <div className="card-container">
             {data.countries.map((country) => (
               <Card key={country.alpha3Code} {...country} />
             ))}

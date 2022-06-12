@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import { useBorderCountryQuery } from '../../hooks/useRestCountries'
-
-import styles from './BorderCountryButton.module.scss'
+import { useBorderCountryQuery } from '../hooks/useRestCountries'
 
 function BorderCountryButton({ code }) {
   const {
@@ -20,7 +18,10 @@ function BorderCountryButton({ code }) {
       ) : isError ? (
         <div>{error.message}</div>
       ) : (
-        <Link to={`/details/${country.alpha3Code}`} className={styles.button}>
+        <Link
+          to={`/details/${country.alpha3Code}`}
+          className="button border-country-button"
+        >
           {country.name}
         </Link>
       )}

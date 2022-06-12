@@ -6,7 +6,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import { getRegionList } from './api/client'
 import App from './App'
 
-import './styles/global.css'
+import './styles/global.scss'
 
 async function prepare() {
   if (process.env.NODE_ENV === 'development') {
