@@ -7,13 +7,18 @@ describe('empty spec', () => {
 describe('See all countries from the API on the homepage', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.injectAxe()
   })
 
-  it.only('renders a series of cards', () => {
+  it("has no accessibility violations", () => {
+    cy.checkA11y();
+  });
+
+  it('renders a series of cards', () => {
     cy.findByRole('link', { name: 'Afghanistan' }).should('exist')
   })
 
   it('contains the correct number of country cards', () => {
-    cy.findAllByRole('link').should('have.length', 250)
+    cy.get('.card').should('have.length', 250)
   })
 })

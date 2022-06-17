@@ -83,7 +83,7 @@ button {
   &:hover,
   &:active {
     background-color: hsl(
-      var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
+        var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
     );
     color: #fff;
   }
@@ -91,13 +91,13 @@ button {
   &:focus,
   &:focus-within {
     border-color: hsl(
-      var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
+        var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
     );
     box-shadow: 0 0 0 3px
-      hsl(
+    hsl(
         var(--input-focus-h) var(--input-focus-s)
-          calc(var(--input-focus-l) + 40%) / 80%
-      );
+        calc(var(--input-focus-l) + 40%) / 80%
+    );
     outline-color: transparent;
     outline-style: solid;
   }
@@ -171,6 +171,7 @@ button {
 }
 
 .filter-bar {
+  margin-block-end: 2rem;
   margin-block-start: 1.5rem;
 
   @media screen and (min-width: 75em) {
@@ -200,13 +201,13 @@ button {
 
   &:focus-within {
     border-color: hsl(
-      var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
+        var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
     );
     box-shadow: 0 0 0 3px
-      hsl(
+    hsl(
         var(--input-focus-h) var(--input-focus-s)
-          calc(var(--input-focus-l) + 40%) / 80%
-      );
+        calc(var(--input-focus-l) + 40%) / 80%
+    );
   }
 }
 
@@ -358,7 +359,7 @@ button {
 
 [data-reach-listbox-option][data-current-nav] {
   background-color: hsl(
-    var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
+      var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
   );
   color: #fff !important;
 }
@@ -367,14 +368,24 @@ button {
 /* #region Country Card Styles */
 .card-container {
   display: grid;
+  grid-auto-rows: max-content;
   justify-items: center;
   padding-block-end: 4.0625rem;
+  row-gap: 2.5rem;
+
+  @media screen and (min-width: 36em) {
+    grid-template-columns: repeat(auto-fit, 16.5rem);
+    justify-content: space-evenly;
+  }
+
+  @media screen and (min-width: 62em) {
+    justify-content: space-between;
+    padding-inline: 1rem;
+    row-gap: 4.6875em;
+  }
 
   @media screen and (min-width: 75em) {
-    grid-auto-rows: max-content;
-    grid-template-columns: repeat(auto-fit, 16.5rem);
-    justify-content: space-between;
-    row-gap: 4.6875em;
+    padding-inline: 0;
   }
 
   @media screen and (min-width: 87.5em) {
@@ -387,24 +398,11 @@ button {
   background: var(--color-element-background);
   border-radius: 5px;
   box-shadow: 0 0 7px 2px rgb(0 0 0 / 3%);
-  margin-block-start: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden; /* Need this to make the border radius apply to nested image. */
   width: 16.5rem;
-
-  @media screen and (min-width: 75em) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-block-start: 0;
-  }
-
-  &:first-of-type {
-    margin-block-start: 2rem;
-
-    @media screen and (min-width: 75em) {
-      margin-block-start: 0;
-    }
-  }
 }
 
 .card-link {
@@ -413,7 +411,7 @@ button {
 
 .card-image {
   border-bottom: 0.015625rem dotted
-    hsl(var(--input-focus-h) var(--input-focus-s) var(--input-focus-l));
+  hsl(var(--input-focus-h) var(--input-focus-s) var(--input-focus-l));
 }
 
 .card-body {
@@ -504,10 +502,18 @@ button {
 .detail-wrapper {
   margin-block-start: 4rem;
 
-  @media screen and (min-width: 75em) {
-    column-gap: 7.5181rem;
+  @media screen and (min-width: 36em) {
+    column-gap: 1.75rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (min-width: 62em) {
+    column-gap: normal;
+  }
+
+  @media screen and (min-width: 75em) {
+    column-gap: 7.5181rem;
     margin-block-start: 5rem;
   }
 }
@@ -523,13 +529,22 @@ button {
 .country-data {
   margin-block-start: 2.75rem;
 
-  .country-name {
-    color: var(--color-text);
-    font-size: var(--font-size-22);
-    font-weight: var(--font-weight-black);
-    line-height: 1.625;
+  @media screen and (min-width: 36em) {
+    margin-block-start: 0;
+  }
 
-    @media screen and (min-width: 75em) {
+  @media screen and (min-width: 62em) {
+    margin-block-start: 2.75rem;
+  }
+
+  .country-name {
+    font-size: var(--font-size-22);
+
+    @media screen and (min-width: 36em) {
+      margin-block-start: 0;
+    }
+
+    @media screen and (min-width: 62em) {
       font-size: var(--font-size-32);
     }
   }
@@ -538,10 +553,13 @@ button {
 .country-facts {
   margin-block-start: 1rem;
 
-  @media screen and (min-width: 75em) {
+  @media screen and (min-width: 62em) {
     column-gap: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (min-width: 75em) {
     margin-block-start: 1.5rem;
   }
 }
@@ -602,7 +620,7 @@ button {
   line-height: 1.5rem;
   margin-block-end: 1rem;
 
-  @media screen and (min-width: 75em) {
+  @media screen and (min-width: 62em) {
     flex-basis: auto;
     margin-block-end: 0;
   }
@@ -620,56 +638,3 @@ button {
   }
 }
 /* #endregion Country Detail */
-
-/* #region Catch Boundary */
-.catch-boundary {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  min-height: 100%;
-  padding: 0;
-}
-
-.not-found {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin-block-start: 20%;
-  min-width: 100%;
-
-  .not-found-image {
-    background-image: url('/emoji.png');
-    background-size: cover;
-    display: inline-block;
-    height: 8.75rem;
-    width: 8.75rem;
-  }
-
-  .not-found-message {
-    margin-inline-start: 1.5rem;
-
-    h2 {
-      color: var(--color-text);
-      font-size: 4.0625rem;
-      font-weight: var(--font-weight-black);
-      margin-block: 0 0.625rem;
-      text-transform: uppercase;
-    }
-
-    h3 {
-      color: var(--color-text);
-      font-size: 1.3125rem;
-      font-weight: var(--font-weight-semi-bold);
-      margin: 0;
-      text-transform: uppercase;
-    }
-
-    p {
-      color: var(--color-input-content);
-      font-weight: var(--font-weight-regular);
-      margin-block-start: 0.5rem;
-    }
-  }
-}
-/* #endregion Catch Boundary */
