@@ -10,9 +10,6 @@ import './styles/global.scss'
 
 async function prepare() {
   if (process.env.NODE_ENV === 'development') {
-    const { default: axe } = await import('@axe-core/react')
-    axe(React, ReactDOM, 1000, { disableDeduplicate: true })
-
     const { worker } = await import('./mocks/browser')
     return worker.start({ onUnhandledRequest: 'bypass' })
   }
@@ -26,12 +23,12 @@ await queryClient.prefetchQuery('regions', getRegionList)
 prepare().then(() => {
   ReactDOM.render(
     <React.StrictMode>
-      <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
           <App />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
-      </BrowserRouter>
+        </BrowserRouter>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </React.StrictMode>,
     document.getElementById('root')
   )
