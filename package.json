@@ -54,11 +54,11 @@
     "eslint-plugin-cypress": "^2.15.2",
     "eslint-plugin-import": "^2.32.0",
     "got": "^11.8.6",
-    "headers-polyfill": "^3.2.5",
-    "msw": "^0.49.3",
+    "msw": "^2.12.4",
     "prettier": "^2.8.8",
     "sass": "^1.97.1",
-    "vite": "^2.9.18"
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0"
   },
   "browserslist": {
     "production": [
@@ -76,9 +76,11 @@
     "node": ">=16"
   },
   "msw": {
-    "workerDirectory": "public"
+    "workerDirectory": [
+      "./public"
+    ]
   },
   "volta": {
-    "node": "16.16.0"
+    "node": "24.12.0"
   }
 }

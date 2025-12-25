@@ -1,12 +1,13 @@
-import { rest } from 'msw'
+import { http, HttpResponse } from 'msw'
 
 import countries from './data/countries.json'
 
 const endpoint = 'https://restcountries.com/v2'
 
 export const handlers = [
-  rest.get(`${endpoint}/all`, (req, res, ctx) => {
-    const fields = req.url.searchParams.get('fields').split(',')
+  http.get(`${endpoint}/all`, ({ request }) => {
+    const url = new URL(request.url)
+    const fields = url.searchParams.get('fields').split(',')
 
     let results = countries.reduce((accumulator, item) => {
       let country = {}
@@ -17,12 +18,13 @@ export const handlers = [
       return accumulator
     }, [])
 
-    return res(ctx.status(200), ctx.json(results))
+    return HttpResponse.json(results, { status: 200 })
   }),
 
-  rest.get(`${endpoint}/name/:partialName`, (req, res, ctx) => {
-    const { partialName } = req.params
-    const fields = req.url.searchParams.get('fields').split(',')
+  http.get(`${endpoint}/name/:partialName`, ({ request, params }) => {
+    const url = new URL(request.url)
+    const { partialName } = params
+    const fields = url.searchParams.get('fields').split(',')
 
     let results = countries.reduce((accumulator, item) => {
       let country = {}
@@ -35,30 +37,32 @@ export const handlers = [
       return accumulator
     }, [])
 
-    return res(ctx.status(200), ctx.json(results))
+    return HttpResponse.json(results, { status: 200 })
   }),
 
-  rest.get(`${endpoint}/region/:region`, (req, res, ctx) => {
-    const { region } = req.params
-    const fields = req.url.searchParams.get('fields').split(',')
+  http.get(`${endpoint}/region/:region`, ({ request, params }) => {
+    const url = new URL(request.url)
+    const { region } = params
+    const fields = url.searchParams.get('fields').split(',')
 
     let results = countries.reduce((accumulator, item) => {
       let country = {}
 
       if (item.region.toLowerCase() === region) {
-        fields.forEach((field) => (country[field] = item[field]));
-        accumulator.push(country);
+        fields.forEach((field) => (country[field] = item[field]))
+        accumulator.push(country)
       }
 
       return accumulator
     }, [])
 
-    return res(ctx.status(200), ctx.json(results))
+    return HttpResponse.json(results, { status: 200 })
   }),
 
-  rest.get(`${endpoint}/alpha/:code`, (req, res, ctx) => {
-    const { code } = req.params
-    const fields = req.url.searchParams.get('fields').split(',')
+  http.get(`${endpoint}/alpha/:code`, ({ request, params }) => {
+    const url = new URL(request.url)
+    const { code } = params
+    const fields = url.searchParams.get('fields').split(',')
 
     let result = countries.reduce((accumulator, item) => {
       if (item.alpha2Code === code || item.alpha3Code === code) {
@@ -67,6 +71,6 @@ export const handlers = [
       return accumulator
     }, {})
 
-    return res(ctx.status(200), ctx.json(result))
+    return HttpResponse.json(result, { status: 200 })
   }),
 ]
