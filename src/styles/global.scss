@@ -83,7 +83,7 @@ button {
   &:hover,
   &:active {
     background-color: hsl(
-        var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
+      var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
     );
     color: #fff;
   }
@@ -91,13 +91,13 @@ button {
   &:focus,
   &:focus-within {
     border-color: hsl(
-        var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
+      var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
     );
     box-shadow: 0 0 0 3px
-    hsl(
+      hsl(
         var(--input-focus-h) var(--input-focus-s)
-        calc(var(--input-focus-l) + 40%) / 80%
-    );
+          calc(var(--input-focus-l) + 40%) / 80%
+      );
     outline-color: transparent;
     outline-style: solid;
   }
@@ -201,13 +201,13 @@ button {
 
   &:focus-within {
     border-color: hsl(
-        var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
+      var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
     );
     box-shadow: 0 0 0 3px
-    hsl(
+      hsl(
         var(--input-focus-h) var(--input-focus-s)
-        calc(var(--input-focus-l) + 40%) / 80%
-    );
+          calc(var(--input-focus-l) + 40%) / 80%
+      );
   }
 }
 
@@ -268,13 +268,13 @@ button {
   }
 }
 
-[data-reach-listbox-input] {
+.select-root {
   align-items: center;
   display: flex;
   width: 100%;
 }
 
-[data-reach-listbox-arrow] {
+.select-icon {
   align-self: center;
   font-size: inherit;
   margin-inline-end: 1.21875rem;
@@ -292,7 +292,7 @@ button {
   }
 }
 
-[data-reach-listbox-button] {
+.select-trigger {
   align-items: center;
   border-color: transparent;
   color: var(--color-text);
@@ -315,14 +315,16 @@ button {
   }
 }
 
-[data-reach-listbox-popover] {
+.select-content {
   background: var(--color-element-background);
   border: none;
   border-radius: 5px;
   box-shadow: 0 2px 9px 0 rgb(0 0 0 / 5%);
   min-width: 12.5rem;
   outline: none;
-  top: 3.25rem;
+  top: 1.25rem;
+  position: relative;
+  left: -1.5rem;
 
   &:focus,
   &:focus-within {
@@ -331,11 +333,11 @@ button {
   }
 }
 
-[data-reach-listbox-list] {
+.select-viewport {
   padding-block: 1rem 0.5rem;
 }
 
-[data-reach-listbox-option] {
+.select-item {
   cursor: pointer;
   font-size: var(--font-size-12);
   letter-spacing: 0;
@@ -353,15 +355,17 @@ button {
 }
 
 /* This is to hide the default entry from the selection list. */
-[data-reach-listbox-option][data-value='default'] {
+.select-item[data-label='default'] {
   display: none;
 }
 
-[data-reach-listbox-option][data-current-nav] {
+.select-item[data-highlighted] {
   background-color: hsl(
-      var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
+    var(--input-focus-h) var(--input-focus-s) var(--input-focus-l)
   );
   color: #fff !important;
+  border: none;
+  outline: transparent;
 }
 /* #endregion Filter Listbox Styles */
 
@@ -411,7 +415,7 @@ button {
 
 .card-image {
   border-bottom: 0.015625rem dotted
-  hsl(var(--input-focus-h) var(--input-focus-s) var(--input-focus-l));
+    hsl(var(--input-focus-h) var(--input-focus-s) var(--input-focus-l));
 }
 
 .card-body {

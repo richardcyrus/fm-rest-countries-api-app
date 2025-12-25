@@ -34,7 +34,6 @@
   "homepage": "https://github.com/richardcyrus/fm-rest-countries-api-app#readme",
   "dependencies": {
     "@heroicons/react": "^1.0.6",
-    "@reach/listbox": "^0.17.0",
     "axios": "^0.30.2",
     "prop-types": "^15.8.1",
     "radix-ui": "^1.4.3",

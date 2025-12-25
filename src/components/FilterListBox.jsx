@@ -1,17 +1,8 @@
 import PropTypes from 'prop-types'
 
-import {
-  ListboxInput,
-  ListboxButton,
-  ListboxPopover,
-  ListboxList,
-  ListboxOption,
-} from '@reach/listbox'
-import { VisuallyHidden } from 'radix-ui'
+import { VisuallyHidden, Select } from 'radix-ui'
 
 import { ChevronDownIcon } from '@heroicons/react/solid'
-
-import '@reach/listbox/styles.css'
 
 function FilterListBox({ regions, selectedRegion, onFilterChanged }) {
   return (
@@ -19,35 +10,42 @@ function FilterListBox({ regions, selectedRegion, onFilterChanged }) {
       <VisuallyHidden.Root id="region-filter-label">
         Filter by Region
       </VisuallyHidden.Root>
-      <ListboxInput
+      <Select.Root
         name="region"
         defaultValue={selectedRegion}
         value={selectedRegion}
-        onChange={onFilterChanged}
+        onValueChange={onFilterChanged}
         required={true}
+        className="select-root"
       >
-        <ListboxButton
+        <Select.Trigger
           aria-labelledby="region-filter-label"
-          arrow={<ChevronDownIcon className="chevron-icon" />}
+          className="select-trigger"
         >
-          {regions[selectedRegion]}
-        </ListboxButton>
-        <ListboxPopover portal={false}>
-          <ListboxList>
+          <Select.Value placeholder={regions['default']}>
+            {regions[selectedRegion]}
+          </Select.Value>
+          <Select.Icon className="select-icon">
+            <ChevronDownIcon className="chevron-icon" />
+          </Select.Icon>
+        </Select.Trigger>
+        <Select.Content position="popper" className="select-content">
+          <Select.Viewport className="select-viewport">
             {Object.keys(regions)
               .sort()
               .map((region) => (
-                <ListboxOption
+                <Select.Item
                   key={region}
                   value={region}
-                  label={regions[region]}
+                  data-label={region}
+                  className="select-item"
                 >
-                  {regions[region]}
-                </ListboxOption>
+                  <Select.ItemText>{regions[region]}</Select.ItemText>
+                </Select.Item>
               ))}
-          </ListboxList>
-        </ListboxPopover>
-      </ListboxInput>
+          </Select.Viewport>
+        </Select.Content>
+      </Select.Root>
     </>
   )
 }
