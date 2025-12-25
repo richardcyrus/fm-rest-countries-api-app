@@ -24,7 +24,7 @@ prepare().then(() => {
   ReactDOM.render(
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+        <BrowserRouter future={{ v7_relativeSplatPath: true }}>
           <App />
         </BrowserRouter>
         <ReactQueryDevtools initialIsOpen={false} />
