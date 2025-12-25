@@ -95,8 +95,8 @@ export const useCountryQuery = (code) => {
           data.currencies && data.currencies.length > 1
             ? data.currencies.map((money) => money.name).join(', ')
             : data.currencies instanceof Array
-            ? data.currencies[0]?.name
-            : '',
+              ? data.currencies[0]?.name
+              : '',
       }),
       []
     ),

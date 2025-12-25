@@ -1,0 +1,22 @@
+// @ts-check
+
+/** @type {import('prettier').Config} */
+
+const config = {
+  arrowParens: 'always',
+  embeddedLanguageFormatting: 'auto',
+  htmlWhitespaceSensitivity: 'css',
+  insertPragma: false,
+  bracketSameLine: false,
+  jsxSingleQuote: false,
+  proseWrap: 'preserve',
+  quoteProps: 'as-needed',
+  requirePragma: false,
+  semi: false,
+  singleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'es5',
+  useTabs: false,
+}
+
+export default config
