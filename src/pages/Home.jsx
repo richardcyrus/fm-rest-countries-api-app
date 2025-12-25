@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRegionsQuery, useCountriesQuery } from '../hooks/useRestCountries'
-import { useQueryClient } from 'react-query'
+import { useQueryClient } from '@tanstack/react-query'
 import useDebounce from '../hooks/useDebounce'
 import { SearchIcon } from '@heroicons/react/outline'
 import { VisuallyHidden } from 'radix-ui'
@@ -34,7 +34,7 @@ function Home() {
   const debouncedTerm = useDebounce(searchTerm)
 
   useEffect(() => {
-    queryClient.invalidateQueries('regions')
+    queryClient.invalidateQueries({ queryKey: ['regions']})
   }, [queryClient])
 
   const { data, error, isLoading, isError } = useCountriesQuery(debouncedTerm)

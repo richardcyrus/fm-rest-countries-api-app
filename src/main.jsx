@@ -1,8 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { getRegionList } from './api/client'
 import App from './App'
 
@@ -18,11 +18,15 @@ async function prepare() {
 }
 
 const queryClient = new QueryClient()
-await queryClient.prefetchQuery('regions', getRegionList)
+await queryClient.prefetchQuery({
+  queryKey: ['regions'],
+  queryFn: getRegionList
+})
 
+const rootElement = document.getElementById('root')
 prepare().then(() => {
-  ReactDOM.render(
-    <React.StrictMode>
+  createRoot(rootElement).render(
+    <StrictMode>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter
           future={{
@@ -34,7 +38,6 @@ prepare().then(() => {
         </BrowserRouter>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
-    </React.StrictMode>,
-    document.getElementById('root')
+    </StrictMode>,
   )
 })

@@ -7,12 +7,14 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 import eslintConfigPrettier from 'eslint-config-prettier/flat'
 import { includeIgnoreFile } from '@eslint/compat'
 import { fileURLToPath } from 'node:url'
+import pluginQuery from '@tanstack/eslint-plugin-query'
 
 const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url))
 
 export default defineConfig([
   globalIgnores(['dist']),
   includeIgnoreFile(gitignorePath, 'Imported .gitignore patterns'),
+  ...pluginQuery.configs['flat/recommended'],
   {
     files: ['**/*.{ts,tsx,js,jsx}'],
     extends: [

@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import {
   getAllCountries,
   getCountryByName,
@@ -41,7 +41,9 @@ const searchCountries = ({ queryKey }) => {
 }
 
 export function useRegionsQuery() {
-  return useQuery('regions', getRegionList, {
+  return useQuery({
+    queryKey: ['regions'],
+    queryFn: getRegionList,
     select: useCallback(
       (data) => ({
         regions: data.reduce((acc, entry) => {
@@ -58,7 +60,9 @@ export function useRegionsQuery() {
 }
 
 export function useCountriesQuery(params) {
-  return useQuery(['countries', { params }], searchCountries, {
+  return useQuery({
+    queryKey: ['countries', { params }],
+    queryFn: searchCountries,
     select: useCallback(
       (data) => ({
         countries: data.map((country) => ({
@@ -75,7 +79,9 @@ export function useCountriesQuery(params) {
 }
 
 export const useCountryQuery = (code) => {
-  return useQuery(['country', code], () => getCountryByCode(code), {
+  return useQuery({
+    queryKey: ['country', code],
+    queryFn: () => getCountryByCode(code),
     select: useCallback(
       (data) => ({
         ...data,
@@ -104,5 +110,7 @@ export const useCountryQuery = (code) => {
 }
 
 export const useBorderCountryQuery = (code) => {
-  return useQuery(['borderCountry', [code]], () => getBorderCountryByCode(code))
+  return useQuery({
+    queryKey: ['borderCountry', [code]],
+    queryFn: () => getBorderCountryByCode(code)})
 }
