@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import VisuallyHidden from '@reach/visually-hidden'
+import { VisuallyHidden } from 'radix-ui'
 
 function Card({ flag, name, alpha3Code, capital, region, population }) {
   return (
     <>
       <div className="card">
-        <VisuallyHidden id={`country-card-${alpha3Code.toLowerCase()}`}>
+        <VisuallyHidden.Root id={`country-card-${alpha3Code.toLowerCase()}`}>
           {name}
-        </VisuallyHidden>
+        </VisuallyHidden.Root>
         <div className="card-image">
           <Link
             to={`/details/${alpha3Code}`}

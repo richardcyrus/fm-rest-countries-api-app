@@ -3,7 +3,7 @@ import { useRegionsQuery, useCountriesQuery } from '../hooks/useRestCountries'
 import { useQueryClient } from 'react-query'
 import useDebounce from '../hooks/useDebounce'
 import { SearchIcon } from '@heroicons/react/outline'
-import VisuallyHidden from '@reach/visually-hidden'
+import { VisuallyHidden } from 'radix-ui'
 
 import FilterListBox from '../components/FilterListBox'
 import Card from '../components/Card'
@@ -47,7 +47,7 @@ function Home() {
       <main id="main-content" className="main-content" role="main">
         <div className="filter-bar">
           <label className="control-group">
-            <VisuallyHidden>Search for a country</VisuallyHidden>
+            <VisuallyHidden.Root>Search for a country</VisuallyHidden.Root>
             <SearchIcon className="search-icon" />
             <input
               type="text"

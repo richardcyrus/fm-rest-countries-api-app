@@ -7,7 +7,8 @@ import {
   ListboxList,
   ListboxOption,
 } from '@reach/listbox'
-import VisuallyHidden from '@reach/visually-hidden'
+import { VisuallyHidden } from 'radix-ui'
+
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
 import '@reach/listbox/styles.css'
@@ -15,7 +16,9 @@ import '@reach/listbox/styles.css'
 function FilterListBox({ regions, selectedRegion, onFilterChanged }) {
   return (
     <>
-      <VisuallyHidden id="region-filter-label">Filter by Region</VisuallyHidden>
+      <VisuallyHidden.Root id="region-filter-label">
+        Filter by Region
+      </VisuallyHidden.Root>
       <ListboxInput
         name="region"
         defaultValue={selectedRegion}
