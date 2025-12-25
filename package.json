@@ -34,13 +34,13 @@
   "homepage": "https://github.com/richardcyrus/fm-rest-countries-api-app#readme",
   "dependencies": {
     "@heroicons/react": "^1.0.6",
-    "axios": "^0.30.2",
     "prop-types": "^15.8.1",
     "radix-ui": "^1.4.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-query": "^3.39.3",
-    "react-router-dom": "^6.30.2"
+    "react-router-dom": "^6.30.2",
+    "redaxios": "^0.5.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.90",
