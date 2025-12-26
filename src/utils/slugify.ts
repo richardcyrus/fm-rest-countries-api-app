@@ -1,4 +1,4 @@
-function slugify(text, separator) {
+function slugify(text: string, separator: string) {
   text = text.toString().toLowerCase().trim()
 
   const sets = [

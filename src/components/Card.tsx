@@ -1,9 +1,24 @@
 import { Link } from 'react-router'
-import PropTypes from 'prop-types'
 
 import { VisuallyHidden } from 'radix-ui'
 
-function Card({ flag, name, alpha3Code, capital, region, population }) {
+type CardProps = {
+  flag: string
+  name: string
+  alpha3Code: string
+  capital?: string
+  region?: string
+  population?: string
+}
+
+function Card({
+  flag,
+  name,
+  alpha3Code,
+  capital,
+  region,
+  population,
+}: CardProps) {
   return (
     <>
       <div className="card">
@@ -49,15 +64,6 @@ function Card({ flag, name, alpha3Code, capital, region, population }) {
       </div>
     </>
   )
-}
-
-Card.propTypes = {
-  flag: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  alpha3Code: PropTypes.string.isRequired,
-  capital: PropTypes.string,
-  region: PropTypes.string,
-  population: PropTypes.string,
 }
 
 export default Card

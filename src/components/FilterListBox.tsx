@@ -1,10 +1,18 @@
-import PropTypes from 'prop-types'
-
 import { VisuallyHidden, Select } from 'radix-ui'
 
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
-function FilterListBox({ regions, selectedRegion, onFilterChanged }) {
+type FilterListBoxProps = {
+  regions: Record<string, string>
+  selectedRegion: string
+  onFilterChanged: (region: string) => void
+}
+
+function FilterListBox({
+  regions,
+  selectedRegion,
+  onFilterChanged,
+}: FilterListBoxProps) {
   return (
     <>
       <VisuallyHidden.Root id="region-filter-label">
@@ -16,7 +24,6 @@ function FilterListBox({ regions, selectedRegion, onFilterChanged }) {
         value={selectedRegion}
         onValueChange={onFilterChanged}
         required={true}
-        className="select-root"
       >
         <Select.Trigger
           aria-labelledby="region-filter-label"
@@ -48,12 +55,6 @@ function FilterListBox({ regions, selectedRegion, onFilterChanged }) {
       </Select.Root>
     </>
   )
-}
-
-FilterListBox.propTypes = {
-  regions: PropTypes.object.isRequired,
-  selectedRegion: PropTypes.string.isRequired,
-  onFilterChanged: PropTypes.func.isRequired,
 }
 
 export default FilterListBox

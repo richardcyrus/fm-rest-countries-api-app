@@ -19,13 +19,13 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedRegion, setSelectedRegion] = useState('default')
 
-  const onInputChanged = (evt) => {
+  const onInputChanged = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedRegion('default')
     setSearchCountryName(evt.target.value)
     setSearchTerm({ type: 'search', value: evt.target.value })
   }
 
-  const onFilterChanged = (region) => {
+  const onFilterChanged = (region: string) => {
     setSearchCountryName('')
     setSelectedRegion(region)
     setSearchTerm({ type: 'region', value: region })
@@ -34,7 +34,7 @@ function Home() {
   const debouncedTerm = useDebounce(searchTerm)
 
   useEffect(() => {
-    queryClient.invalidateQueries({ queryKey: ['regions']})
+    queryClient.invalidateQueries({ queryKey: ['regions'] })
   }, [queryClient])
 
   const { data, error, isLoading, isError } = useCountriesQuery(debouncedTerm)

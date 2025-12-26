@@ -10,12 +10,12 @@ import {
 } from '../api/client'
 import slugify from '../utils/slugify'
 
-const formatPopulation = (value) => {
+const formatPopulation = (value: number) => {
   return new Intl.NumberFormat('en-US', { style: 'decimal' }).format(value)
 }
 
 const searchCountries = ({ queryKey }) => {
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line  @typescript-eslint/no-unused-vars
   const [_key, { params }] = queryKey
 
   if (typeof params === 'undefined' || params === '') {
@@ -78,7 +78,7 @@ export function useCountriesQuery(params) {
   })
 }
 
-export const useCountryQuery = (code) => {
+export const useCountryQuery = (code: string) => {
   return useQuery({
     queryKey: ['country', code],
     queryFn: () => getCountryByCode(code),
@@ -109,8 +109,9 @@ export const useCountryQuery = (code) => {
   })
 }
 
-export const useBorderCountryQuery = (code) => {
+export const useBorderCountryQuery = (code: string) => {
   return useQuery({
     queryKey: ['borderCountry', [code]],
-    queryFn: () => getBorderCountryByCode(code)})
+    queryFn: () => getBorderCountryByCode(code),
+  })
 }

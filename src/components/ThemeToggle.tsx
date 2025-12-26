@@ -1,8 +1,6 @@
-import PropTypes from 'prop-types'
-
 import { MoonIcon } from '@heroicons/react/outline'
 
-function ThemeToggle({ toggleTheme }) {
+function ThemeToggle({ toggleTheme }: { toggleTheme: () => void }) {
   return (
     <button
       type="button"
@@ -13,10 +11,6 @@ function ThemeToggle({ toggleTheme }) {
       Dark Mode
     </button>
   )
-}
-
-ThemeToggle.propTypes = {
-  toggleTheme: PropTypes.func.isRequired,
 }
 
 export default ThemeToggle

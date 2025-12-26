@@ -4,4 +4,6 @@ dist
 .nova
 .vscode
 node_modules/
-**/*.ts
+yarn.lock
+package-lock.json
+pnpm-lock.yaml

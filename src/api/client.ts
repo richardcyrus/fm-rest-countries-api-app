@@ -8,7 +8,7 @@ const client = axios.create({
   responseType: 'json',
 })
 
-export const getRegionList = () => {
+export const getRegionList = async () => {
   const queryParams = { fields: 'region' }
 
   return client
@@ -16,7 +16,7 @@ export const getRegionList = () => {
     .then((response) => response.data)
 }
 
-export const getAllCountries = () => {
+export const getAllCountries = async () => {
   const fields = [
     'alpha2Code',
     'alpha3Code',
@@ -36,7 +36,7 @@ export const getAllCountries = () => {
     .then((response) => response.data)
 }
 
-export const getCountriesByRegion = (region) => {
+export const getCountriesByRegion = async (region: string) => {
   const fields = [
     'alpha2Code',
     'alpha3Code',
@@ -56,7 +56,7 @@ export const getCountriesByRegion = (region) => {
     .then((response) => response.data)
 }
 
-export const getCountryByName = (name) => {
+export const getCountryByName = async (name: string) => {
   const fields = [
     'alpha2Code',
     'alpha3Code',
@@ -76,7 +76,7 @@ export const getCountryByName = (name) => {
     .then((response) => response.data)
 }
 
-export const getCountryByCode = (code) => {
+export const getCountryByCode = async (code: string) => {
   const fields = [
     'alpha2Code',
     'alpha3Code',
@@ -102,7 +102,7 @@ export const getCountryByCode = (code) => {
     .then((response) => response.data)
 }
 
-export const getBorderCountryByCode = (code) => {
+export const getBorderCountryByCode = async (code: string) => {
   const fields = ['alpha2Code', 'alpha3Code', 'name']
 
   const queryParams = {

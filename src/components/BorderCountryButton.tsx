@@ -1,9 +1,8 @@
 import { Link } from 'react-router'
-import PropTypes from 'prop-types'
 
 import { useBorderCountryQuery } from '../hooks/useRestCountries'
 
-function BorderCountryButton({ code }) {
+function BorderCountryButton({ code }: { code: string }) {
   const {
     data: country,
     error,
@@ -28,7 +27,5 @@ function BorderCountryButton({ code }) {
     </>
   )
 }
-
-BorderCountryButton.propTypes = { code: PropTypes.string.isRequired }
 
 export default BorderCountryButton
