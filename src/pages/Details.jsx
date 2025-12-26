@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router'
 import { useQueryClient } from '@tanstack/react-query'
 import { useCountryQuery } from '../hooks/useRestCountries'
 
