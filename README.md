@@ -1,12 +1,14 @@
-# Frontend Mentor - REST Countries API with color theme switcher solution
+# Frontend Mentor - REST Countries API with color theme switcher solution <!-- omit in toc -->
 
 This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Table of contents
+## Table of contents <!-- omit in toc -->
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
+    - [Project Screenshots](#project-screenshots)
+    - [Reference images](#reference-images)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -69,14 +71,14 @@ Users should be able to:
 - Flexbox
 - Mobile-first workflow
 - Semantic HTML5 markup
-- [Axios](https://axios-http.com/)
-- [cypress](https://www.cypress.io/)
+- [redaxios](https://github.com/developit/redaxios)
 - [Heroicons](https://heroicons.com)
-- [Vite.js](https://vitejs.dev/) - a build tool that aims to provide a faster and leaner development experience for modern web projects
-- [Reach UI](https://reach.tech/)
+- [Vite](https://vite.dev/) - a build tool that aims to provide a faster and leaner development experience for modern web projects
+- [Radix UI](https://www.radix-ui.com/)
 - [React Router](https://reactrouter.com/)
-- [React Query](https://react-query.tanstack.com/)
+- [Tanstack Query](https://tanstack.com/query/latest)
 - [React](https://reactjs.org/) - JS library
+- [usehooks-ts](https://usehooks-ts.com/)
 
 ### Useful resources
 
@@ -86,12 +88,9 @@ Users should be able to:
 - [Set up Light and Dark Theme in React](https://milddev.com/react/set-up-light-and-dark-theme-in-react/)
 - [A Dark Mode Toggle with React and ThemeProvider](https://css-tricks.com/a-dark-mode-toggle-with-react-and-themeprovider/)
 - [Guide to Advanced CSS Selectors - Part One](https://moderncss.dev/guide-to-advanced-css-selectors-part-one/#attribute-selector)
-- [Test Your Web App in Dark Mode](https://www.cypress.io/blog/2019/12/13/test-your-web-app-in-dark-mode/)
 - [Debouncing with React Hooks](https://dev.to/gabe_ragland/debouncing-with-react-hooks-jci)
 - [React Query Data Transformations](https://tkdodo.eu/blog/react-query-data-transformations)
-- [Hints for Adding Data-cy Attributes for Cypress Testing](https://haase1020.medium.com/hints-for-adding-data-cy-attributes-for-cypress-testing-998e8f64f325)
-- [Dynamically Importing Components with React.lazy](https://www.aleksandrhovhannisyan.com/blog/react-lazy-dynamic-imports/)
-- [Example setup for using msw with vitejs](https://github.com/msutkowski/msw-ts-vitejs)
+- [Configure Vitest, MSW and Playwright in a React project with Vite and TS](https://dev.to/juan_deto/configure-vitest-msw-and-playwright-in-a-react-project-with-vite-and-ts-part-3-32pe)
 
 ## Author
 

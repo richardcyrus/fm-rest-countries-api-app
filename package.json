@@ -1,6 +1,6 @@
 {
   "name": "rest-countries-api-app",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "This is a solution to the REST Countries API with color theme switcher challenge on Frontend Mentor",
   "private": true,
   "type": "module",
@@ -20,15 +20,12 @@
     "url": "git+https://github.com/richardcyrus/fm-rest-countries-api-app.git"
   },
   "keywords": [
-    "axe-core",
     "css-custom-properties",
     "frontend-mentor",
     "heroicons-react",
     "html5",
-    "reach-ui",
     "reactjs",
-    "testing-library",
-    "vitejs"
+    "vite"
   ],
   "author": "Richard Cyrus <richard.cyrus@rcyrus.com> (https://www.richardcyrus.com)",
   "license": "MIT",
@@ -55,7 +52,6 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
-    "axe-core": "^4.11.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^7.0.1",
