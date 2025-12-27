@@ -28,4 +28,12 @@ export default defineConfig({
     ],
     watch: false,
   },
+  server: {
+    headers: {
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "same-origin",
+    }
+  }
 })
