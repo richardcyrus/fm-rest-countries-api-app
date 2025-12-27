@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
-import { useRegionsQuery, useCountriesQuery } from '../hooks/useRestCountries'
-import { useQueryClient } from '@tanstack/react-query'
-import useDebounce from '../hooks/useDebounce'
 import { SearchIcon } from '@heroicons/react/outline'
+import { useQueryClient } from '@tanstack/react-query'
 import { VisuallyHidden } from 'radix-ui'
+import { useEffect, useState } from 'react'
+import useDebounce from '../hooks/useDebounce'
+import { useCountriesQuery, useRegionsQuery } from '../hooks/useRestCountries'
 
-import FilterListBox from '../components/FilterListBox'
 import Card from '../components/Card'
+import FilterListBox from '../components/FilterListBox'
 import Loading from '../components/Loading'
 
 const filterDefault = {
@@ -76,7 +76,7 @@ function Home() {
         ) : (
           <div className="card-container">
             {data.countries.map((country) => (
-              <Card key={country.alpha3Code} {...country} />
+              <Card key={country.cca3} {...country} />
             ))}
           </div>
         )}

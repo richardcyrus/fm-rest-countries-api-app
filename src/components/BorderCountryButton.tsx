@@ -18,7 +18,7 @@ function BorderCountryButton({ code }: { code: string }) {
         <div>{error.message}</div>
       ) : (
         <Link
-          to={`/details/${country.alpha3Code}`}
+          to={`/details/${country.cca3}`}
           className="button border-country-button"
         >
           {country.name}

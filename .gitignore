@@ -210,3 +210,7 @@ dist-ssr
 
 .idea
 mockServiceWorker.js
+notes.md
+*.http
+countries*.json
+countries.json

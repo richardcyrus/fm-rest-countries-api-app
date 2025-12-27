@@ -1,13 +1,19 @@
-import { useCallback } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { useCallback } from 'react'
 import {
   getAllCountries,
-  getCountryByName,
-  getCountryByCode,
-  getCountriesByRegion,
   getBorderCountryByCode,
+  getCountriesByRegion,
+  getCountryByCode,
+  getCountryByName,
   getRegionList,
 } from '../api/client'
+import type {
+  BorderCountrySummary,
+  CountryDetail,
+  CountrySummary,
+  Region,
+} from '../types'
 import slugify from '../utils/slugify'
 
 const formatPopulation = (value: number) => {
@@ -45,11 +51,11 @@ export function useRegionsQuery() {
     queryKey: ['regions'],
     queryFn: getRegionList,
     select: useCallback(
-      (data) => ({
-        regions: data.reduce((acc, entry) => {
+      (data: Region[]) => ({
+        regions: data.reduce<Record<string, string>>((acc, entry) => {
           // We set the separator to a literal space, so it is encoded
           // correctly when sent to the API.
-          let slug = slugify(entry.region, ' ')
+          const slug = slugify(entry.region, ' ')
           acc[slug] = entry.region
           return acc
         }, {}),
@@ -59,19 +65,27 @@ export function useRegionsQuery() {
   })
 }
 
+/**
+ * ['countries', { params: '' }] = getAllCountries
+ * ['countries', { params: { type: 'search', value: string } }] = getCountryByName
+ * ['countries', { params: { type: 'region', value: string } }] = getCountriesByRegion
+ */
 export function useCountriesQuery(params) {
   return useQuery({
     queryKey: ['countries', { params }],
     queryFn: searchCountries,
     select: useCallback(
-      (data) => ({
-        countries: data.map((country) => ({
-          ...country,
-          flag: country.flag.includes('flagcdn')
-            ? country.flag
-            : `https://flagcdn.com/${country.alpha2Code.toLowerCase()}.svg`,
-          population: formatPopulation(country.population),
-        })),
+      (data: CountrySummary[]) => ({
+        countries: data.map((country) => {
+          return {
+            flag: country.flags.svg,
+            name: country.name.common,
+            cca3: country.cca3,
+            capital: country.capital ? country.capital.join(', ') : null,
+            region: country.region,
+            population: formatPopulation(country.population),
+          }
+        }),
       }),
       []
     ),
@@ -82,30 +96,50 @@ export const useCountryQuery = (code: string) => {
   return useQuery({
     queryKey: ['country', code],
     queryFn: () => getCountryByCode(code),
-    select: useCallback(
-      (data) => ({
-        ...data,
+    select: useCallback((data: CountryDetail) => {
+      let topLevelDomains = ''
+      let languages = ''
+      let currencies = ''
+      let nativeName = ''
+
+      if (data.tld && data.tld.length > 1) {
+        topLevelDomains = data.tld.join(', ')
+      } else if (data.tld && data.tld.length === 1) {
+        topLevelDomains = data.tld[0]
+      }
+
+      if (data.languages) {
+        languages = Object.values(data.languages).join(', ')
+      }
+
+      if (data.currencies) {
+        currencies = Object.keys(data.currencies)
+          .map((key) => data.currencies?.[key].name)
+          .join(', ')
+      }
+
+      if (data.name.nativeName) {
+        const nativeNames = Object.values(data.name.nativeName).map(
+          (n) => n.official
+        )
+        nativeName = nativeNames[0]
+      }
+
+      return {
+        flag: data.flags.svg,
+        name: data.name.common,
+        nativeName: nativeName,
         population: formatPopulation(data.population),
-        flag: data.flag.includes('flagcdn')
-          ? data.flag
-          : `https://flagcdn.com/${data.alpha2Code.toLowerCase()}.svg`,
-        topLevelDomains:
-          data.topLevelDomain.length > 1
-            ? data.topLevelDomain.join(', ')
-            : data.topLevelDomain[0],
-        languages:
-          data.languages.length > 1
-            ? data.languages.map((lang) => lang.name).join(', ')
-            : data.languages[0].name,
-        currencies:
-          data.currencies && data.currencies.length > 1
-            ? data.currencies.map((money) => money.name).join(', ')
-            : data.currencies instanceof Array
-              ? data.currencies[0]?.name
-              : '',
-      }),
-      []
-    ),
+        region: data.region,
+        subregion: data.subregion,
+        capital: data.capital ? data.capital.join(', ') : null,
+        topLevelDomain: topLevelDomains,
+        currencies: currencies,
+        languages: languages,
+        borders: data.borders,
+        cca3: data.cca3,
+      }
+    }, []),
   })
 }
 
@@ -113,5 +147,12 @@ export const useBorderCountryQuery = (code: string) => {
   return useQuery({
     queryKey: ['borderCountry', [code]],
     queryFn: () => getBorderCountryByCode(code),
+    select: useCallback(
+      (data: BorderCountrySummary) => ({
+        name: data.name.common,
+        cca3: data.cca3,
+      }),
+      []
+    ),
   })
 }

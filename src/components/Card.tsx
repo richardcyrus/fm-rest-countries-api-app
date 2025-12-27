@@ -5,32 +5,21 @@ import { VisuallyHidden } from 'radix-ui'
 type CardProps = {
   flag: string
   name: string
-  alpha3Code: string
-  capital?: string
-  region?: string
-  population?: string
+  cca3: string
+  capital: string
+  region: string
+  population: string
 }
 
-function Card({
-  flag,
-  name,
-  alpha3Code,
-  capital,
-  region,
-  population,
-}: CardProps) {
+function Card({ flag, name, cca3, capital, region, population }: CardProps) {
   return (
     <>
       <div className="card">
-        <VisuallyHidden.Root id={`country-card-${alpha3Code.toLowerCase()}`}>
+        <VisuallyHidden.Root id={`country-card-${cca3.toLowerCase()}`}>
           {name}
         </VisuallyHidden.Root>
         <div className="card-image">
-          <Link
-            to={`/details/${alpha3Code}`}
-            title={name}
-            className="card-link"
-          >
+          <Link to={`/details/${cca3}`} title={name} className="card-link">
             <img
               src={flag}
               width={264}
@@ -41,7 +30,7 @@ function Card({
           </Link>
         </div>
         <div className="card-body">
-          <Link to={`/details/${alpha3Code}`} className="card-link">
+          <Link to={`/details/${cca3}`} className="card-link">
             <h2 className="country-name">{name}</h2>
             <dl className="card-facts">
               <div className="card-fact-group">
