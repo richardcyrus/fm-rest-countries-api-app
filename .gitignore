@@ -212,5 +212,5 @@ dist-ssr
 mockServiceWorker.js
 notes.md
 *.http
-countries*.json
-countries.json
+countriesv*.json
+countriesV*.json
