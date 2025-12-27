@@ -40,4 +40,7 @@ export type CountryDetailOrBorderSummary = Partial<
   CountryDetail | BorderCountrySummary
 >
 
-// export type CountryDetails = {}
+export type SearchParams = {
+  type?: 'search' | 'region'
+  value?: string
+}

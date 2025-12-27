@@ -15,12 +15,19 @@ import type {
   Region,
 } from '../types'
 import slugify from '../utils/slugify'
+import type { SearchParams } from '../types'
+
+type QueryKey = [
+  'countries',
+  { params: SearchParams | '' },
+  ...ReadonlyArray<unknown>,
+]
 
 const formatPopulation = (value: number) => {
   return new Intl.NumberFormat('en-US', { style: 'decimal' }).format(value)
 }
 
-const searchCountries = ({ queryKey }) => {
+const searchCountries = ({ queryKey }: { queryKey: QueryKey }) => {
   // eslint-disable-next-line  @typescript-eslint/no-unused-vars
   const [_key, { params }] = queryKey
 
@@ -30,13 +37,15 @@ const searchCountries = ({ queryKey }) => {
 
   if (
     Object.prototype.hasOwnProperty.call(params, 'type') &&
-    params.type === 'region'
+    params.type === 'region' &&
+    typeof params.value === 'string'
   ) {
     return getCountriesByRegion(params.value)
   }
 
   if (
     Object.prototype.hasOwnProperty.call(params, 'type') &&
+    typeof params.value === 'string' &&
     params.type === 'search' &&
     params.value !== ''
   ) {
@@ -65,12 +74,7 @@ export function useRegionsQuery() {
   })
 }
 
-/**
- * ['countries', { params: '' }] = getAllCountries
- * ['countries', { params: { type: 'search', value: string } }] = getCountryByName
- * ['countries', { params: { type: 'region', value: string } }] = getCountriesByRegion
- */
-export function useCountriesQuery(params) {
+export function useCountriesQuery(params: SearchParams) {
   return useQuery({
     queryKey: ['countries', { params }],
     queryFn: searchCountries,
@@ -81,7 +85,7 @@ export function useCountriesQuery(params) {
             flag: country.flags.svg,
             name: country.name.common,
             cca3: country.cca3,
-            capital: country.capital ? country.capital.join(', ') : null,
+            capital: country.capital ? country.capital.join(', ') : undefined,
             region: country.region,
             population: formatPopulation(country.population),
           }
@@ -132,7 +136,7 @@ export const useCountryQuery = (code: string) => {
         population: formatPopulation(data.population),
         region: data.region,
         subregion: data.subregion,
-        capital: data.capital ? data.capital.join(', ') : null,
+        capital: data.capital ? data.capital.join(', ') : undefined,
         topLevelDomain: topLevelDomains,
         currencies: currencies,
         languages: languages,

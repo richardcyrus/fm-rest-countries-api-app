@@ -1,4 +1,5 @@
-/// <referecnce types="vitest/config" />
+/// <reference types="vitest/config" />
+/// <reference types="vite/client" />
 import react from '@vitejs/plugin-react'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
@@ -9,7 +10,7 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '~': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   css: {
@@ -21,9 +22,10 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     setupFiles: ['./vitest.setup.ts'],
-    coverage: {
-      reporter: ['text', 'html'],
-      exclude: ['src/tests/**'],
-    },
+    include: [
+      'src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+      'test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+    ],
+    watch: false,
   },
 })

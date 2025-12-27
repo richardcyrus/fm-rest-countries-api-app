@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 
-import { useBorderCountryQuery } from '../hooks/useRestCountries'
+import { useBorderCountryQuery } from '~/hooks/useRestCountries'
 
 function BorderCountryButton({ code }: { code: string }) {
   const {
@@ -18,10 +18,10 @@ function BorderCountryButton({ code }: { code: string }) {
         <div>{error.message}</div>
       ) : (
         <Link
-          to={`/details/${country.cca3}`}
+          to={`/details/${country?.cca3}`}
           className="button border-country-button"
         >
-          {country.name}
+          {country?.name}
         </Link>
       )}
     </>

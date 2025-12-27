@@ -3,7 +3,7 @@ import type {
   CountryDetailOrBorderSummary,
   CountrySummary,
   RegionOrCountrySummary,
-} from '../../types.ts'
+} from '~/types.ts'
 
 import countries from './data/countries.json'
 

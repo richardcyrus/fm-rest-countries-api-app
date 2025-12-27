@@ -6,7 +6,7 @@ type CardProps = {
   flag: string
   name: string
   cca3: string
-  capital: string
+  capital?: string
   region: string
   population: string
 }

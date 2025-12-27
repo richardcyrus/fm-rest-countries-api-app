@@ -1,8 +1,8 @@
-import { Routes, Route } from 'react-router'
+import { Route, Routes } from 'react-router'
 
-import Header from './components/Header'
-import Home from './pages/Home'
-import Details from './pages/Details'
+import Header from '~/components/Header'
+import Details from '~/pages/Details'
+import Home from '~/pages/Home'
 
 export default function App() {
   return (

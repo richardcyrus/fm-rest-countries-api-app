@@ -2,12 +2,13 @@ import { SearchIcon } from '@heroicons/react/outline'
 import { useQueryClient } from '@tanstack/react-query'
 import { VisuallyHidden } from 'radix-ui'
 import { useEffect, useState } from 'react'
-import useDebounce from '../hooks/useDebounce'
-import { useCountriesQuery, useRegionsQuery } from '../hooks/useRestCountries'
+import useDebounce from '~/hooks/useDebounce'
+import { useCountriesQuery, useRegionsQuery } from '~/hooks/useRestCountries'
+import type { SearchParams } from '~/types'
 
-import Card from '../components/Card'
-import FilterListBox from '../components/FilterListBox'
-import Loading from '../components/Loading'
+import Card from '~/components/Card'
+import FilterListBox from '~/components/FilterListBox'
+import Loading from '~/components/Loading'
 
 const filterDefault = {
   default: 'Filter by Region',
@@ -15,9 +16,9 @@ const filterDefault = {
 
 function Home() {
   const queryClient = useQueryClient()
-  const [searchCountryName, setSearchCountryName] = useState('')
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedRegion, setSelectedRegion] = useState('default')
+  const [searchCountryName, setSearchCountryName] = useState<string>('')
+  const [searchTerm, setSearchTerm] = useState<SearchParams>({})
+  const [selectedRegion, setSelectedRegion] = useState<string>('default')
 
   const onInputChanged = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedRegion('default')
@@ -32,6 +33,7 @@ function Home() {
   }
 
   const debouncedTerm = useDebounce(searchTerm)
+  // const debouncedTerm = useDebounce(searchCountryName)
 
   useEffect(() => {
     queryClient.invalidateQueries({ queryKey: ['regions'] })
@@ -40,7 +42,7 @@ function Home() {
   const { data, error, isLoading, isError } = useCountriesQuery(debouncedTerm)
   const { data: regionList } = useRegionsQuery()
 
-  const regions = { ...filterDefault, ...regionList.regions }
+  const regions = { ...filterDefault, ...regionList?.regions }
 
   return (
     <>
@@ -75,7 +77,7 @@ function Home() {
           </div>
         ) : (
           <div className="card-container">
-            {data.countries.map((country) => (
+            {data?.countries.map((country) => (
               <Card key={country.cca3} {...country} />
             ))}
           </div>

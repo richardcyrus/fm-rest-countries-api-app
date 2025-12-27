@@ -1,11 +1,11 @@
+import { useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { Link, useParams } from 'react-router'
-import { useQueryClient } from '@tanstack/react-query'
-import { useCountryQuery } from '../hooks/useRestCountries'
+import { useCountryQuery } from '~/hooks/useRestCountries'
 
-import BorderCountryButton from '../components/BorderCountryButton'
-import Loading from '../components/Loading'
 import { ArrowNarrowLeftIcon } from '@heroicons/react/outline'
+import BorderCountryButton from '~/components/BorderCountryButton'
+import Loading from '~/components/Loading'
 
 function Details() {
   const { code } = useParams()
@@ -15,7 +15,7 @@ function Details() {
     queryClient.invalidateQueries()
   }, [queryClient])
 
-  const { data: country, error, isLoading, isError } = useCountryQuery(code)
+  const { data: country, error, isLoading, isError } = useCountryQuery(code!)
 
   return (
     <>
@@ -36,34 +36,34 @@ function Details() {
           <div className="detail-wrapper">
             <div id="flag-container" className="flag-container">
               <img
-                src={country.flag}
-                alt={`Flag of ${country.name}`}
+                src={country?.flag}
+                alt={`Flag of ${country?.name}`}
                 className="large-flag"
                 loading="lazy"
                 width={560}
               />
             </div>
             <div className="country-data">
-              <h2 className="country-name">{country.name}</h2>
+              <h2 className="country-name">{country?.name}</h2>
               <div className="country-facts">
                 <dl className="fact-group-left" id="fact-group-left">
                   <div className="fact-group">
                     <dt className="fact-label">Native Name</dt>
-                    <dd className="fact-value">{country.nativeName}</dd>
+                    <dd className="fact-value">{country?.nativeName}</dd>
                   </div>
                   <div className="fact-group">
                     <dt className="fact-label">Population</dt>
-                    <dd className="fact-value">{country.population}</dd>
+                    <dd className="fact-value">{country?.population}</dd>
                   </div>
                   <div className="fact-group">
                     <dt className="fact-label">Region</dt>
-                    <dd className="fact-value">{country.region}</dd>
+                    <dd className="fact-value">{country?.region}</dd>
                   </div>
                   <div className="fact-group">
                     <dt className="fact-label">Sub Region</dt>
-                    <dd className="fact-value">{country.subregion}</dd>
+                    <dd className="fact-value">{country?.subregion}</dd>
                   </div>
-                  {country.capital && country.capital.length > 0 ? (
+                  {country?.capital && country.capital.length > 0 ? (
                     <div className="fact-group">
                       <dt className="fact-label">Capital</dt>
                       <dd className="fact-value">{country.capital}</dd>
@@ -73,9 +73,9 @@ function Details() {
                 <dl className="fact-group-right" id="fact-group-right">
                   <div className="fact-group">
                     <dt className="fact-label">Top Level Domain</dt>
-                    <dd className="fact-value">{country.topLevelDomain}</dd>
+                    <dd className="fact-value">{country?.topLevelDomain}</dd>
                   </div>
-                  {country.currencies && country.currencies.length > 0 ? (
+                  {country?.currencies && country.currencies.length > 0 ? (
                     <div className="fact-group">
                       <dt className="fact-label">Currencies</dt>
                       <dd className="fact-value">{country.currencies}</dd>
@@ -83,11 +83,11 @@ function Details() {
                   ) : null}
                   <div className="fact-group">
                     <dt className="fact-label">Languages</dt>
-                    <dd className="fact-value">{country.languages}</dd>
+                    <dd className="fact-value">{country?.languages}</dd>
                   </div>
                 </dl>
               </div>
-              {country.borders && country.borders.length > 0 ? (
+              {country?.borders && country.borders.length > 0 ? (
                 <div className="border-countries">
                   <h3 className="border-countries-title">Border Countries:</h3>
                   {country.borders.map((code) => (

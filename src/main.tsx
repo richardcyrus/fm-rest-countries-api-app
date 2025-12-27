@@ -3,18 +3,21 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
-import { getRegionList } from './api/client'
-import App from './App'
+import { getRegionList } from '~/api/client'
+import App from '~/App'
 
 import './styles/global.scss'
 
-async function prepare() {
-  if (process.env.NODE_ENV === 'development') {
-    const { worker } = await import('./mocks/browser')
-    return worker.start({ onUnhandledRequest: 'bypass' })
+async function enableMocking() {
+  if (import.meta.env.VITE_API_MOCK !== 'true') {
+    return
   }
 
-  return Promise.resolve()
+  const { worker } = await import('~/mocks/browser')
+
+  // `worker.start()` returns a Promise that resolves
+  // once the Service Worker is up and ready to intercept requests.
+  return worker.start({ onUnhandledRequest: 'bypass' })
 }
 
 const queryClient = new QueryClient()
@@ -24,7 +27,8 @@ await queryClient.prefetchQuery({
 })
 
 const rootElement = document.getElementById('root')
-prepare().then(() => {
+
+enableMocking().then(() => {
   createRoot(rootElement!).render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
