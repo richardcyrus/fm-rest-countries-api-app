@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { Link, useParams } from 'react-router'
 import { useCountryQuery } from '~/hooks/useRestCountries'
 
-import { ArrowNarrowLeftIcon } from '@heroicons/react/outline'
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import BorderCountryButton from '~/components/BorderCountryButton'
 import Loading from '~/components/Loading'
 
@@ -29,7 +29,7 @@ function Details() {
         <main role="main" id="main-content" className="country-detail-content">
           <div className="nav-container">
             <Link to="/" className="button nav-button">
-              <ArrowNarrowLeftIcon className="back-arrow-icon" />
+              <ArrowLeftIcon className="back-arrow-icon" />
               Back
             </Link>
           </div>

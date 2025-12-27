@@ -1,4 +1,4 @@
-import { MoonIcon } from '@heroicons/react/outline'
+import { MoonIcon } from '@heroicons/react/24/outline'
 
 function ThemeToggle({ toggleTheme }: { toggleTheme: () => void }) {
   return (

@@ -1,4 +1,4 @@
-import { SearchIcon } from '@heroicons/react/outline'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { useQueryClient } from '@tanstack/react-query'
 import { VisuallyHidden } from 'radix-ui'
 import { useEffect, useState } from 'react'
@@ -50,7 +50,7 @@ function Home() {
         <div className="filter-bar">
           <label className="control-group">
             <VisuallyHidden.Root>Search for a country</VisuallyHidden.Root>
-            <SearchIcon className="search-icon" />
+            <MagnifyingGlassIcon className="search-icon" />
             <input
               type="text"
               name="search-text"

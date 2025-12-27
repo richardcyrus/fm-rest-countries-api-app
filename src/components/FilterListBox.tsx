@@ -1,6 +1,6 @@
-import { VisuallyHidden, Select } from 'radix-ui'
+import { Select, VisuallyHidden } from 'radix-ui'
 
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 type FilterListBoxProps = {
   regions: Record<string, string>
