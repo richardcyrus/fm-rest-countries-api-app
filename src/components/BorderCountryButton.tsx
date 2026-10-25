@@ -1,30 +1,14 @@
-import { Link } from 'react-router'
+import { Link } from '@tanstack/react-router'
 
-import { useBorderCountryQuery } from '~/hooks/useRestCountries'
-
-function BorderCountryButton({ code }: { code: string }) {
-  const {
-    data: country,
-    error,
-    isLoading,
-    isError,
-  } = useBorderCountryQuery(code)
-
+function BorderCountryButton({ code, name }: { code: string; name: string }) {
   return (
-    <>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : isError ? (
-        <div>{error.message}</div>
-      ) : (
-        <Link
-          to={`/details/${country?.cca3}`}
-          className="button border-country-button"
-        >
-          {country?.name}
-        </Link>
-      )}
-    </>
+    <Link
+      to="/details/$code"
+      params={{ code }}
+      className="button border-country-button"
+    >
+      {name}
+    </Link>
   )
 }
 

@@ -1,0 +1,89 @@
+{
+  "names": {
+    "alternates": [],
+    "common": "Canada",
+    "native": {
+      "eng": {
+        "common": "Canada",
+        "official": "Canada"
+      },
+      "fra": {
+        "common": "Canada",
+        "official": "Canada"
+      }
+    },
+    "official": "Canada",
+    "translations": {
+      "fra": {
+        "common": "Canada",
+        "official": "Canada"
+      }
+    }
+  },
+  "codes": {
+    "alpha_2": "CA",
+    "alpha_3": "CAN",
+    "ccn3": "124",
+    "cioc": "CAN",
+    "fifa": "CAN",
+    "fips": "CA",
+    "gec": "CA"
+  },
+  "capitals": [
+    {
+      "attributes": {
+        "administrative": false,
+        "constitutional": false,
+        "executive": false,
+        "judicial": false,
+        "legislative": false,
+        "primary": true
+      },
+      "coordinates": {
+        "lat": 45.42,
+        "lng": -75.7
+      },
+      "name": "Ottawa"
+    }
+  ],
+  "flag": {
+    "description": "The flag of Canada is composed of a red vertical band on the hoist and fly sides and a central white square that is twice the width of the vertical bands. A large eleven-pointed red maple leaf is centered in the white square.",
+    "emoji": "🇨🇦",
+    "url_png": "https://flags.restcountries.com/v5/w640/ca.png",
+    "url_svg": "https://flags.restcountries.com/v5/svg/ca.svg"
+  },
+  "region": "Americas",
+  "subregion": "North America",
+  "borders": ["USA"],
+  "currencies": [
+    {
+      "code": "CAD",
+      "name": "Canadian dollar",
+      "symbol": "$"
+    }
+  ],
+  "languages": [
+    {
+      "bcp47": "en",
+      "iso639_1": "en",
+      "iso639_2b": "eng",
+      "iso639_2t": "eng",
+      "iso639_3": "eng",
+      "name": "English",
+      "native_name": "English"
+    },
+    {
+      "bcp47": "fr",
+      "iso639_1": "fr",
+      "iso639_2b": "fre",
+      "iso639_2t": "fra",
+      "iso639_3": "fra",
+      "name": "French",
+      "native_name": "français"
+    }
+  ],
+  "tlds": [".ca"],
+  "population": 41798407,
+  "landlocked": false,
+  "uuid": "189581ed-44b0-47d7-9849-6b097401a7d6"
+}

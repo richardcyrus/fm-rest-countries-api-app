@@ -1,21 +1,21 @@
-import { useEffect } from 'react'
-import { useDarkMode } from 'usehooks-ts'
+import { getRouteApi } from '@tanstack/react-router'
+import { useState } from 'react'
 import ThemeToggle from '~/components/ThemeToggle'
+import { setTheme } from '~/server/theme'
+
+const rootRoute = getRouteApi('__root__')
 
 function Header() {
-  const { isDarkMode, toggle } = useDarkMode({
-    defaultValue: false,
-    initializeWithValue: false,
-    localStorageKey: 'theme',
-  })
+  const initialTheme = rootRoute.useLoaderData()
+  const [theme, setCurrentTheme] = useState(initialTheme)
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark')
-    } else {
-      document.body.classList.remove('dark')
-    }
-  }, [isDarkMode])
+  const toggle = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+
+    setCurrentTheme(next)
+    document.body.classList.toggle('dark', next === 'dark')
+    void setTheme({ data: next })
+  }
 
   return (
     <header role="banner" className="site-header">

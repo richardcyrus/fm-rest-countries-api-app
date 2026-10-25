@@ -209,8 +209,23 @@ dist-ssr
 *.local
 
 .idea
-mockServiceWorker.js
 notes.md
 *.http
 countriesv*.json
 countriesV*.json
+.vitest/
+
+# Playwright
+test-results/
+playwright-report/
+
+# Nitro / TanStack Start
+.output/
+.nitro/
+.tanstack/
+
+# Real API data; may not be redistributed. Generate with `pnpm fixtures:refresh`.
+test/fixtures/countries.v5.json
+
+# 1Password secret reference for `pnpm dev:live` / `pnpm test:live`; local only.
+.env.op

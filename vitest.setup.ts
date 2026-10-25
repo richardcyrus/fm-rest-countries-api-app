@@ -1,7 +1,7 @@
 // @vitest-environment node
-import { afterAll, afterEach, beforeAll } from 'vitest'
-import { server } from './src/mocks/node.ts'
+import { cleanup } from '@testing-library/react'
+import { afterEach } from 'vite-plus/test'
 
-beforeAll(() => server.listen())
-afterEach(() => server.resetHandlers())
-afterAll(() => server.close())
+afterEach(() => {
+  cleanup()
+})

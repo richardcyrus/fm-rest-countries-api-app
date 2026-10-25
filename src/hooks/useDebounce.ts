@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react'
-import type { SearchParams } from '~/types'
 
-export default function useDebounce(value: SearchParams) {
+export default function useDebounce<T>(value: T, delayMs = 500) {
   const [debouncedValue, setDebouncedValue] = useState(value)
 
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedValue(value)
-    }, 500)
+    }, delayMs)
 
     return () => clearTimeout(handler)
-  }, [value])
+  }, [value, delayMs])
 
   return debouncedValue
 }

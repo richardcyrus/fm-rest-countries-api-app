@@ -5,15 +5,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "format": "prettier --write .",
-    "lint": "eslint \"**/*.[jt]s?(x)\"",
-    "fix": "eslint --fix \"**/*.[jt]s?(x)\"",
-    "test": "vitest run",
-    "test:watch": "vitest watch",
-    "test:coverage": "vitest run --coverage"
+    "dev": "vp dev",
+    "dev:live": "op run --env-file=.env.op -- vp dev",
+    "build": "tsc -b && vp build",
+    "preview": "vp preview",
+    "format": "vp fmt .",
+    "lint": "vp lint \"**/*.[jt]s?(x)\"",
+    "fix": "vp lint --fix \"**/*.[jt]s?(x)\"",
+    "test": "vp test run",
+    "test:watch": "vp test watch",
+    "test:coverage": "vp test run --coverage",
+    "e2e": "pnpm build && playwright test",
+    "fixtures:refresh": "op run --env-file=.env.op -- node scripts/refresh-fixtures.ts",
+    "test:live": "op run --env-file=.env.op -- env LIVE_API=1 vp test run test/live-contract.test.ts",
+    "prepare": "vp config"
   },
   "repository": {
     "type": "git",
@@ -35,59 +40,40 @@
   "homepage": "https://github.com/richardcyrus/fm-rest-countries-api-app#readme",
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@tanstack/react-query": "^5.90.12",
-    "@tanstack/react-query-devtools": "^5.91.1",
-    "radix-ui": "^1.4.3",
+    "@tanstack/react-query": "^5.104.5",
+    "@tanstack/react-query-devtools": "^5.104.5",
+    "@tanstack/react-router": "^1.170.46",
+    "@tanstack/react-router-ssr-query": "^1.167.3",
+    "@tanstack/react-start": "^1.169.4",
+    "nitro": "3.0.260903-beta",
+    "radix-ui": "^1.8.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-router": "^7.11.0",
-    "redaxios": "^0.5.1",
-    "usehooks-ts": "^3.1.1"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@eslint/compat": "^2.0.0",
-    "@eslint/js": "^9.39.2",
-    "@tanstack/eslint-plugin-query": "^5.91.2",
-    "@types/node": "^25.0.3",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.2",
-    "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.26",
+    "@playwright/test": "^1.64.1",
+    "@tanstack/eslint-plugin-query": "^5.104.5",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^25.9.9",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.2.0",
     "globals": "^16.5.0",
-    "happy-dom": "^20.0.11",
-    "msw": "^2.12.6",
-    "prettier": "^3.7.4",
-    "sass": "^1.97.1",
+    "happy-dom": "^20.14.6",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.1",
-    "vite": "^7.3.0",
-    "vite-tsconfig-paths": "^6.0.3",
-    "vitest": "^4.0.16"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   },
   "engines": {
-    "node": ">=16"
+    "node": "24.x"
   },
-  "msw": {
-    "workerDirectory": [
-      "./public"
-    ]
-  },
-  "volta": {
-    "node": "24.12.0"
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.15.0",
+      "onFail": "download"
+    }
   }
 }

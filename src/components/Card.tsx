@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from '@tanstack/react-router'
 
 import { VisuallyHidden } from 'radix-ui'
 
@@ -19,7 +19,12 @@ function Card({ flag, name, cca3, capital, region, population }: CardProps) {
           {name}
         </VisuallyHidden.Root>
         <div className="card-image">
-          <Link to={`/details/${cca3}`} title={name} className="card-link">
+          <Link
+            to="/details/$code"
+            params={{ code: cca3 }}
+            title={name}
+            className="card-link"
+          >
             <img
               src={flag}
               width={264}
@@ -30,7 +35,11 @@ function Card({ flag, name, cca3, capital, region, population }: CardProps) {
           </Link>
         </div>
         <div className="card-body">
-          <Link to={`/details/${cca3}`} className="card-link">
+          <Link
+            to="/details/$code"
+            params={{ code: cca3 }}
+            className="card-link"
+          >
             <h2 className="country-name">{name}</h2>
             <dl className="card-facts">
               <div className="card-fact-group">

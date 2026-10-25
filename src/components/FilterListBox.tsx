@@ -38,18 +38,23 @@ function FilterListBox({
         </Select.Trigger>
         <Select.Content position="popper" className="select-content">
           <Select.Viewport className="select-viewport">
-            {Object.keys(regions)
-              .sort()
-              .map((region) => (
-                <Select.Item
-                  key={region}
-                  value={region}
-                  data-label={region}
-                  className="select-item"
-                >
-                  <Select.ItemText>{regions[region]}</Select.ItemText>
-                </Select.Item>
-              ))}
+            {[
+              'default',
+              ...Object.keys(regions)
+                .filter((region) => region !== 'default')
+                .sort(),
+            ].map((region) => (
+              <Select.Item
+                key={region}
+                value={region}
+                data-label={region}
+                className="select-item"
+              >
+                <Select.ItemText>
+                  {region === 'default' ? 'All Regions' : regions[region]}
+                </Select.ItemText>
+              </Select.Item>
+            ))}
           </Select.Viewport>
         </Select.Content>
       </Select.Root>
